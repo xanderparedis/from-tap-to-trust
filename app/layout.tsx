@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { SiteNav } from "./_components/site-nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "From Tap to Trust",
-  description: "Een burgeronderzoek naar de smaak en geur van kraanwater.",
+  title: { default: "From Tap to Trust", template: "%s | From Tap to Trust" },
+  description: "Ontdek waar je kraanwater vandaan komt, vind een tappunt en verken de thuistest.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="nl">
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#inhoud">Direct naar inhoud</a>
+        <SiteNav />
+        <main id="inhoud" className="frame" tabIndex={-1}>{children}</main>
+        <footer className="site-footer">
+          <div className="frame footer-content">
+            <Link href="/" className="footer-brand">
+              <Image src="/brand/water-symbol.png" alt="" width={28} height={28} unoptimized />
+              <span>From Tap to Trust</span>
+            </Link>
+            <Link href="/contact">Iets mis? Neem contact op <span aria-hidden="true">↗</span></Link>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }

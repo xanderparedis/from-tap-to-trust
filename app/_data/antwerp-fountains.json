@@ -1,0 +1,762 @@
+[
+  {
+    "id": 2,
+    "name": "Beukenlaan",
+    "district": "Antwerpen",
+    "postcode": "2020",
+    "lat": 51.1835,
+    "lng": 4.407427
+  },
+  {
+    "id": 25,
+    "name": "Bogaardestraat 8",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.215527,
+    "lng": 4.400426
+  },
+  {
+    "id": 6,
+    "name": "Boudewijnsstraat",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.205545,
+    "lng": 4.398642
+  },
+  {
+    "id": 94,
+    "name": "Boudewijnsstraat",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.205497,
+    "lng": 4.398712
+  },
+  {
+    "id": 18,
+    "name": "Brooklynstraat 22-24",
+    "district": "Antwerpen",
+    "postcode": "2030",
+    "lat": 51.25888,
+    "lng": 4.42482
+  },
+  {
+    "id": 65,
+    "name": "Cadixstraat thv 21",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.233281,
+    "lng": 4.410243
+  },
+  {
+    "id": 24,
+    "name": "Canadalaan 104",
+    "district": "Antwerpen",
+    "postcode": "2030",
+    "lat": 51.250134,
+    "lng": 4.42152
+  },
+  {
+    "id": 70,
+    "name": "Cockerillkaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.212251,
+    "lng": 4.389195
+  },
+  {
+    "id": 15,
+    "name": "Columbiastraat 14-16",
+    "district": "Antwerpen",
+    "postcode": "2030",
+    "lat": 51.251459,
+    "lng": 4.422923
+  },
+  {
+    "id": 27,
+    "name": "Dageraadplaats 13",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.207443,
+    "lng": 4.430265
+  },
+  {
+    "id": 28,
+    "name": "Dageraadplaats 5",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.207059,
+    "lng": 4.430357
+  },
+  {
+    "id": 73,
+    "name": "Dageraadplaats 5",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.207059,
+    "lng": 4.430416
+  },
+  {
+    "id": 53,
+    "name": "Damplein 18",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.232298,
+    "lng": 4.424426
+  },
+  {
+    "id": 54,
+    "name": "De Coninckplein 19-20",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.221646,
+    "lng": 4.420472
+  },
+  {
+    "id": 71,
+    "name": "De Gerlachekaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.209719,
+    "lng": 4.386075
+  },
+  {
+    "id": 74,
+    "name": "De Gerlachekaai 1-2",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.210144,
+    "lng": 4.387354
+  },
+  {
+    "id": 29,
+    "name": "Duinstraat",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.222226,
+    "lng": 4.429372
+  },
+  {
+    "id": 84,
+    "name": "Duinstraat nvt",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.222123,
+    "lng": 4.427317
+  },
+  {
+    "id": 67,
+    "name": "Emile Verhaerenlaan thv 25",
+    "district": "Antwerpen",
+    "postcode": "2050",
+    "lat": 51.223869,
+    "lng": 4.380681
+  },
+  {
+    "id": 95,
+    "name": "Galgenweellaan nvt",
+    "district": "Antwerpen",
+    "postcode": "2050",
+    "lat": 51.217463,
+    "lng": 4.378027
+  },
+  {
+    "id": 96,
+    "name": "Gaston Burssenslaan",
+    "district": "Antwerpen",
+    "postcode": "2050",
+    "lat": 51.21885,
+    "lng": 4.381354
+  },
+  {
+    "id": 11,
+    "name": "Groenplaats 34-35",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.218747,
+    "lng": 4.401847
+  },
+  {
+    "id": 30,
+    "name": "Grote Markt 22",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.221021,
+    "lng": 4.399967
+  },
+  {
+    "id": 31,
+    "name": "Hendrik Conscienceplein 1",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.22105,
+    "lng": 4.403959
+  },
+  {
+    "id": 92,
+    "name": "Jan Ligthartplein nvt",
+    "district": "Antwerpen",
+    "postcode": "2020",
+    "lat": 51.187226,
+    "lng": 4.388071
+  },
+  {
+    "id": 89,
+    "name": "Kempenstraat",
+    "district": "Antwerpen",
+    "postcode": "2030",
+    "lat": 51.231884,
+    "lng": 4.416431
+  },
+  {
+    "id": 4,
+    "name": "Kerkstraat 90",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.219008,
+    "lng": 4.431945
+  },
+  {
+    "id": 33,
+    "name": "Koningin Astridplein 21-23",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.218013,
+    "lng": 4.4216
+  },
+  {
+    "id": 32,
+    "name": "Koningin Astridplein 40",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.218346,
+    "lng": 4.420676
+  },
+  {
+    "id": 80,
+    "name": "Koolkaai 15",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.224813,
+    "lng": 4.400207
+  },
+  {
+    "id": 58,
+    "name": "Lange Leemstraat",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.203661,
+    "lng": 4.425706
+  },
+  {
+    "id": 35,
+    "name": "Leopoldplaats 6-7",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.212659,
+    "lng": 4.407495
+  },
+  {
+    "id": 36,
+    "name": "Lijnwaadmarkt 16-18",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.220507,
+    "lng": 4.402334
+  },
+  {
+    "id": 12,
+    "name": "Lombardenvest 1",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.217476,
+    "lng": 4.403979
+  },
+  {
+    "id": 39,
+    "name": "Meir 22-24",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.218057,
+    "lng": 4.406377
+  },
+  {
+    "id": 40,
+    "name": "Multatuliplein 2",
+    "district": "Antwerpen",
+    "postcode": "2050",
+    "lat": 51.222595,
+    "lng": 4.384421
+  },
+  {
+    "id": 10,
+    "name": "Pompoenstraat",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.227476,
+    "lng": 4.432677
+  },
+  {
+    "id": 57,
+    "name": "Rubenslei",
+    "district": "Antwerpen",
+    "postcode": "2018",
+    "lat": 51.213209,
+    "lng": 4.414581
+  },
+  {
+    "id": 69,
+    "name": "Sint-Andriesplaats 19",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.214889,
+    "lng": 4.396652
+  },
+  {
+    "id": 43,
+    "name": "Sint-Jansplein",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.225814,
+    "lng": 4.417323
+  },
+  {
+    "id": 42,
+    "name": "Sint-Jansplein 3-4",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.226101,
+    "lng": 4.418021
+  },
+  {
+    "id": 41,
+    "name": "Sint-Jansplein 43",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.224749,
+    "lng": 4.41749
+  },
+  {
+    "id": 1,
+    "name": "Sint-Jansvliet 4",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.218459,
+    "lng": 4.39663
+  },
+  {
+    "id": 44,
+    "name": "Stadswaag 15",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.223816,
+    "lng": 4.407307
+  },
+  {
+    "id": 45,
+    "name": "Steenplein",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.221482,
+    "lng": 4.396926
+  },
+  {
+    "id": 46,
+    "name": "Teniersplaats 5-9",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.218201,
+    "lng": 4.414804
+  },
+  {
+    "id": 13,
+    "name": "Visestraat",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.2291,
+    "lng": 4.425746
+  },
+  {
+    "id": 14,
+    "name": "Visestraat",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.228663,
+    "lng": 4.427793
+  },
+  {
+    "id": 48,
+    "name": "Visestraat 106",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.228095,
+    "lng": 4.430778
+  },
+  {
+    "id": 50,
+    "name": "Visestraat 6",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.229254,
+    "lng": 4.424507
+  },
+  {
+    "id": 49,
+    "name": "Visestraat 94-96",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.228206,
+    "lng": 4.430221
+  },
+  {
+    "id": 85,
+    "name": "Vlaamsekaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.208826,
+    "lng": 4.389111
+  },
+  {
+    "id": 88,
+    "name": "Vlaamsekaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.207655,
+    "lng": 4.387726
+  },
+  {
+    "id": 34,
+    "name": "Vleminckveld 70",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.213799,
+    "lng": 4.404619
+  },
+  {
+    "id": 86,
+    "name": "Waalsekaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.207728,
+    "lng": 4.387056
+  },
+  {
+    "id": 87,
+    "name": "Waalsekaai",
+    "district": "Antwerpen",
+    "postcode": "2000",
+    "lat": 51.208993,
+    "lng": 4.388376
+  },
+  {
+    "id": 72,
+    "name": "Willy Vandersteenplein",
+    "district": "Antwerpen",
+    "postcode": "2060",
+    "lat": 51.2245,
+    "lng": 4.429782
+  },
+  {
+    "id": 78,
+    "name": "Beernaertstraat 30",
+    "district": "Berchem",
+    "postcode": "2600",
+    "lat": 51.198717,
+    "lng": 4.424493
+  },
+  {
+    "id": 75,
+    "name": "Frans Van Hombeeckplein 17",
+    "district": "Berchem",
+    "postcode": "2600",
+    "lat": 51.195154,
+    "lng": 4.416958
+  },
+  {
+    "id": 38,
+    "name": "Marcel Auburtinlaan",
+    "district": "Berchem",
+    "postcode": "2600",
+    "lat": 51.189054,
+    "lng": 4.430673
+  },
+  {
+    "id": 76,
+    "name": "Rodekruislaan 3-4",
+    "district": "Berchem",
+    "postcode": "2600",
+    "lat": 51.20236,
+    "lng": 4.439647
+  },
+  {
+    "id": 52,
+    "name": "Dominicanenstraat 25",
+    "district": "Berendrecht – zandvliet – lillo",
+    "postcode": "2040",
+    "lat": 51.34585,
+    "lng": 4.323297
+  },
+  {
+    "id": 9,
+    "name": "Tolhuisstraat 5",
+    "district": "Berendrecht – Zandvliet – Lillo",
+    "postcode": "2040",
+    "lat": 51.303902,
+    "lng": 4.288694
+  },
+  {
+    "id": 7,
+    "name": "Tongerlostraat 5",
+    "district": "Berendrecht – Zandvliet – Lillo",
+    "postcode": "2040",
+    "lat": 51.347327,
+    "lng": 4.331157
+  },
+  {
+    "id": 8,
+    "name": "Zandvlietse Dorpstraat 110",
+    "district": "Berendrecht – Zandvliet – Lillo",
+    "postcode": "2040",
+    "lat": 51.356757,
+    "lng": 4.317649
+  },
+  {
+    "id": 3,
+    "name": "Generaal De Wetstraat 16",
+    "district": "Borgerhout",
+    "postcode": "2140",
+    "lat": 51.21648,
+    "lng": 4.439864
+  },
+  {
+    "id": 37,
+    "name": "Luitenant Naeyaertplein 11",
+    "district": "Borgerhout",
+    "postcode": "2140",
+    "lat": 51.209898,
+    "lng": 4.440244
+  },
+  {
+    "id": 62,
+    "name": "Moorkensplein thv 14",
+    "district": "Borgerhout",
+    "postcode": "2140",
+    "lat": 51.213506,
+    "lng": 4.433964
+  },
+  {
+    "id": 79,
+    "name": "Terloplein",
+    "district": "Borgerhout",
+    "postcode": "2140",
+    "lat": 51.219495,
+    "lng": 4.443874
+  },
+  {
+    "id": 64,
+    "name": "August Van De Wielelei",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.216821,
+    "lng": 4.488241
+  },
+  {
+    "id": 82,
+    "name": "August Van De Wielelei",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.217557,
+    "lng": 4.491215
+  },
+  {
+    "id": 23,
+    "name": "Bosuil 138-140",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.22911,
+    "lng": 4.464025
+  },
+  {
+    "id": 83,
+    "name": "Clara Snellingsstraat",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.223827,
+    "lng": 4.462654
+  },
+  {
+    "id": 5,
+    "name": "Gabriel Vervoortstraat 6A-6D",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.207192,
+    "lng": 4.460448
+  },
+  {
+    "id": 22,
+    "name": "Te Couwelaarlei 101-103",
+    "district": "Deurne",
+    "postcode": "2100",
+    "lat": 51.223023,
+    "lng": 4.458788
+  },
+  {
+    "id": 68,
+    "name": "Veltwijcklaan 27",
+    "district": "Ekeren",
+    "postcode": "2180",
+    "lat": 51.277643,
+    "lng": 4.422568
+  },
+  {
+    "id": 26,
+    "name": "Constantin Meunierplein 30",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.17111,
+    "lng": 4.340378
+  },
+  {
+    "id": 60,
+    "name": "Coöperatielaan nvt",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.17648,
+    "lng": 4.369339
+  },
+  {
+    "id": 93,
+    "name": "Harold Rosherstraat nvt",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.18286,
+    "lng": 4.347057
+  },
+  {
+    "id": 56,
+    "name": "Hoofdfrontweg",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.166591,
+    "lng": 4.350823
+  },
+  {
+    "id": 61,
+    "name": "Kioskplaats",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.176784,
+    "lng": 4.350315
+  },
+  {
+    "id": 59,
+    "name": "Lageweg 152",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.184063,
+    "lng": 4.359586
+  },
+  {
+    "id": 51,
+    "name": "Majoor Maelfaitplein 8-9",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.171584,
+    "lng": 4.367685
+  },
+  {
+    "id": 55,
+    "name": "Paul Vekemanslaan nvt",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.174747,
+    "lng": 4.359866
+  },
+  {
+    "id": 91,
+    "name": "Schaapskooi nvt",
+    "district": "Hoboken",
+    "postcode": "2660",
+    "lat": 51.179466,
+    "lng": 4.346297
+  },
+  {
+    "id": 16,
+    "name": "Borrewaterstraat 135",
+    "district": "Merksem",
+    "postcode": "2170",
+    "lat": 51.239309,
+    "lng": 4.445648
+  },
+  {
+    "id": 90,
+    "name": "Gaston Berghmansdreef",
+    "district": "Merksem",
+    "postcode": "2170",
+    "lat": 51.246301,
+    "lng": 4.451886
+  },
+  {
+    "id": 66,
+    "name": "Kwadeveldenplein",
+    "district": "Merksem",
+    "postcode": "2170",
+    "lat": 51.259036,
+    "lng": 4.442339
+  },
+  {
+    "id": 17,
+    "name": "Speelpleinstraat 211",
+    "district": "Merksem",
+    "postcode": "2170",
+    "lat": 51.248357,
+    "lng": 4.444996
+  },
+  {
+    "id": 63,
+    "name": "Gallaitlaan nvt",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.158465,
+    "lng": 4.393509
+  },
+  {
+    "id": 97,
+    "name": "Jef Nyslaan",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.1619,
+    "lng": 4.394342
+  },
+  {
+    "id": 21,
+    "name": "Lievevrouwkesbosweg 20",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.161239,
+    "lng": 4.378536
+  },
+  {
+    "id": 20,
+    "name": "Michel Willemsplein 103",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.180572,
+    "lng": 4.3749
+  },
+  {
+    "id": 19,
+    "name": "Michel Willemsplein 107",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.180656,
+    "lng": 4.375008
+  },
+  {
+    "id": 81,
+    "name": "Michel Willemsplein 82",
+    "district": "Wilrijk",
+    "postcode": "2610",
+    "lat": 51.180938,
+    "lng": 4.374993
+  }
+]
