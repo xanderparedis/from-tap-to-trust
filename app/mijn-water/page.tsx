@@ -1,22 +1,41 @@
 import type { Metadata } from "next";
 import { Intro } from "../_components/content";
+import { herkomst } from "../../inhoud.json";
 import { WaterLookup } from "./water-lookup";
 
-export const metadata: Metadata = { title: "Waar komt mijn water vandaan?" };
+export const metadata: Metadata = { title: herkomst.titel };
 
 export default function WaterPage() {
+  const { antwerpen, route } = herkomst;
+
   return (
     <>
-      <Intro section="Platform" title="Waar komt mijn water vandaan?">
-        <p>Zoek op gemeente, district of postcode. Je krijgt de herkomst op het niveau van het leveringsgebied.</p>
+      <Intro section="Platform" title={herkomst.titel}>
+        <p>{herkomst.intro}</p>
       </Intro>
-      <WaterLookup />
+      <WaterLookup antwerp={antwerpen} />
+      <section className="section-space" id="waterwinning-antwerpen" aria-labelledby="antwerp-title">
+        <div className="section-heading">
+          <div>
+            <h2 id="antwerp-title">{antwerpen.titel}</h2>
+            <p>{antwerpen.intro}</p>
+          </div>
+        </div>
+        <div className="feature-grid">
+          {antwerpen.sites.map((site) => (
+            <article className="panel" key={site.titel}>
+              <h3>{site.titel}</h3>
+              <p>{site.tekst}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="section-space" aria-labelledby="water-route">
-        <h2 id="water-route">Van bron tot kraan</h2>
+        <h2 id="water-route">{route.titel}</h2>
         <ol className="card-grid route-list">
-          <li className="panel"><h3>Van grond of rivier</h3><p>Drinkwaterbedrijven gebruiken grondwater of oppervlaktewater, afhankelijk van de regio.</p></li>
-          <li className="panel"><h3>Zuivering en levering</h3><p>Het waterbedrijf zuivert en controleert het water tijdens de productie en distributie.</p></li>
-          <li className="panel"><h3>In jouw gebouw</h3><p>Ook materialen en toestellen in de binneninstallatie kunnen invloed hebben op het water uit je eigen kraan.</p></li>
+          {route.stappen.map((step) => (
+            <li className="panel" key={step.titel}><h3>{step.titel}</h3><p>{step.tekst}</p></li>
+          ))}
         </ol>
       </section>
     </>

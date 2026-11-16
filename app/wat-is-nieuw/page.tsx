@@ -1,29 +1,23 @@
 import type { Metadata } from "next";
 import { Intro, NextLink } from "../_components/content";
+import { watIsNieuw } from "../../inhoud.json";
 
-export const metadata: Metadata = { title: "Wat is nieuw?" };
+export const metadata: Metadata = { title: watIsNieuw.titel };
 
 export default function NewsPage() {
   return (
     <>
-      <Intro section="Platform" title="Wat is nieuw?">
-        <p>Volg wat we uit het burgeronderzoek leren en wat je al kunt uitproberen.</p>
+      <Intro section="Platform" title={watIsNieuw.titel}>
+        <p>{watIsNieuw.intro}</p>
       </Intro>
       <div className="card-grid section-space">
-        <article className="panel">
-          <h2>Wat we hoorden over kraanwater</h2>
-          <p>In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur.</p>
-        </article>
-        <article className="panel">
-          <h2>Publieke tappunten in Antwerpen</h2>
-          <p>Zoek een drinkwaterpunt op de kaart en filter de stadsgegevens per district of postcode.</p>
-          <NextLink href="/kaart">Bekijk de kaart</NextLink>
-        </article>
-        <article className="panel">
-          <h2>Probeer de testroutes</h2>
-          <p>Verken hoe een chloormeting wordt teruggekoppeld en welke stappen je kunt zetten als je twijfelt over loden leidingen.</p>
-          <NextLink href="/testresultaten">Naar mijn tests</NextLink>
-        </article>
+        {watIsNieuw.kaarten.map((card) => (
+          <article className="panel" key={card.titel}>
+            <h2>{card.titel}</h2>
+            <p>{card.tekst}</p>
+            {card.link && <NextLink href={card.link.adres}>{card.link.tekst}</NextLink>}
+          </article>
+        ))}
       </div>
     </>
   );

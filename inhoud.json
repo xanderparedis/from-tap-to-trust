@@ -1,0 +1,93 @@
+{
+  "startpagina": {
+    "label": "Burgeronderzoek naar kraanwater",
+    "titel": "Leer je kraanwater kennen.",
+    "intro": "Waar komt het vandaan, hoe smaakt het en waar vul je onderweg bij? Van je eigen kraan tot het tappunt om de hoek.",
+    "hoofdlijst": "Jouw water, van dichtbij",
+    "kaarten": [
+      {
+        "titel": "Waar komt mijn water vandaan?",
+        "tekst": "Volg je kraanwater van bron tot kraan en vind je waterbedrijf.",
+        "link": "/mijn-water"
+      },
+      {
+        "titel": "Iets anders aan je water?",
+        "tekst": "Zoek uit wat je kunt doen bij vreemde smaak, geur of kleur.",
+        "link": "/waterproblemen"
+      },
+      {
+        "titel": "Vul bij onderweg",
+        "tekst": "Vind publieke drinkwaterpunten en ontdek de Trusted by us-kaart.",
+        "link": "/kaart"
+      }
+    ],
+    "testTitel": "Van thuistest naar resultaat",
+    "testUitleg": "Bekijk een voorbeeld van een chloormeting of doorloop de zelfcheck voor loden leidingen."
+  },
+  "watIsNieuw": {
+    "titel": "Wat is nieuw?",
+    "intro": "Volg wat we uit het burgeronderzoek leren en wat je al kunt uitproberen.",
+    "kaarten": [
+      {
+        "titel": "Wat we hoorden over kraanwater",
+        "tekst": "In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur."
+      },
+      {
+        "titel": "Publieke tappunten in Antwerpen",
+        "tekst": "Zoek een drinkwaterpunt op de kaart en filter de stadsgegevens per district of postcode.",
+        "link": {
+          "tekst": "Bekijk de kaart",
+          "adres": "/kaart"
+        }
+      },
+      {
+        "titel": "Probeer de testroutes",
+        "tekst": "Verken hoe een chloormeting wordt teruggekoppeld en welke stappen je kunt zetten als je twijfelt over loden leidingen.",
+        "link": {
+          "tekst": "Naar mijn tests",
+          "adres": "/testresultaten"
+        }
+      }
+    ]
+  },
+  "herkomst": {
+    "titel": "Waar komt mijn water vandaan?",
+    "intro": "Zoek je buurt, district of postcode. Voor Stad Antwerpen tonen we het waterbedrijf en leggen we uit waar het drinkwater in de regio vandaan komt.",
+    "antwerpen": {
+      "titel": "Van de Maas naar Antwerpen",
+      "intro": "Het Antwerpse drinkwater wordt gemaakt van oppervlaktewater. De Maas voedt de kanalen waar Water-link water inneemt voor de productie van drinkwater.",
+      "leverancier": "Water-link",
+      "brontype": "Oppervlaktewater",
+      "oorsprong": "Maas",
+      "sites": [
+        {
+          "titel": "Oelegem (Ranst)",
+          "tekst": "Waterwinning via het Albertkanaal."
+        },
+        {
+          "titel": "Walem (Mechelen)",
+          "tekst": "Waterwinning via het Netekanaal."
+        }
+      ],
+      "schaal": "Dit is informatie voor de Antwerpse regio. Bij je waterbedrijf kun je navragen hoe jouw aansluiting wordt bevoorraad.",
+      "onbekend": "Gebruik de officiële postcodezoeker om je waterbedrijf op te zoeken. De lokale uitleg over waterwinning op dit platform is uitgewerkt voor Stad Antwerpen."
+    },
+    "route": {
+      "titel": "Van bron tot kraan",
+      "stappen": [
+        {
+          "titel": "Water winnen",
+          "tekst": "Drinkwaterbedrijven halen ruwwater uit de bodem of gebruiken oppervlaktewater uit bijvoorbeeld een rivier of kanaal."
+        },
+        {
+          "titel": "Zuiveren en verdelen",
+          "tekst": "In het drinkwaterproductiecentrum wordt het ruwwater behandeld. Via het distributienet komt het drinkwater bij gebouwen terecht. Het waterbedrijf controleert de kwaliteit tijdens de productie en levering."
+        },
+        {
+          "titel": "Door de leidingen in je gebouw",
+          "tekst": "Vanaf de aansluiting loopt het water door de binneninstallatie naar je kraan. De materialen en het onderhoud van die leidingen en toestellen kunnen invloed hebben op het water uit je kraan."
+        }
+      ]
+    }
+  }
+}

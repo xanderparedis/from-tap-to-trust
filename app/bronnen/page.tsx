@@ -10,7 +10,10 @@ const references = [
     links: [
       ["AquaFlanders – Kwaliteit van mijn drinkwater", sources.waterQuality],
       ["AquaFlanders – Zoek je waterbedrijf", sources.waterCompany],
-      ["Stroomgebiedbeheerplannen – Drinkwater in de regio Antwerpen", sources.antwerpWater],
+      ["AquaFlanders – Waterbedrijf voor Antwerpen", sources.antwerpWaterCompany],
+      ["Stroomgebiedbeheerplannen – Drinkwaterproductie in het Netebekken", sources.antwerpWater],
+      ["Stroomgebiedbeheerplannen – De Maas als bron voor Antwerpen", sources.antwerpWaterOrigin],
+      ["VMM – Drinkwaterkwaliteit per leveringsgebied", sources.distributionQuality],
     ],
   },
   {

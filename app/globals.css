@@ -237,6 +237,10 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
 .lookup-result { margin-top: 1rem; }
 .lookup-result h3 { margin-bottom: .5rem; }
 .lookup-result .actions { margin-top: .2rem; }
+.origin-facts { display: flex; flex-wrap: wrap; gap: .65rem 1.5rem; margin-block: .85rem; }
+.origin-facts div { padding: .6rem .85rem; border-radius: .6rem; background: var(--brand-paper); }
+.origin-facts dt { font-size: .9rem; }
+.origin-facts dd { font-family: var(--brand-heading); font-weight: 700; }
 
 .switcher, .section-nav { display: flex; flex-wrap: wrap; gap: .55rem; }
 .switcher button, .section-nav a {

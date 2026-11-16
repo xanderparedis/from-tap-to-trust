@@ -3,17 +3,33 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import Link from "next/link";
-import fountains from "../_data/antwerp-fountains.json";
 import { antwerpNeighborhoods } from "../_data/antwerp-neighborhoods";
 import { sources } from "../_data/sources";
 
-const antwerpNames = new Set(["antwerpen", "antwerp", "berendrecht", "zandvliet", "lillo", ...fountains.map((point) => point.district.toLowerCase())]);
-const antwerpPostcodes = new Set(["2000", "2018", "2020", "2030", "2040", "2050", "2060", "2100", "2140", "2170", "2180", "2600", "2610", "2660"]);
+const antwerpNames = new Set([
+  "antwerpen", "antwerp", "berchem", "berendrecht", "berendrecht – zandvliet – lillo",
+  "borgerhout", "borsbeek", "deurne", "ekeren", "hoboken", "lillo", "linkeroever",
+  "merksem", "wilrijk", "zandvliet",
+]);
+const antwerpPostcodes = new Set([
+  "2000", "2018", "2020", "2030", "2040", "2050", "2060", "2100", "2140",
+  "2150", "2170", "2180", "2600", "2610", "2660",
+]);
 
-export function WaterLookup() {
+type AntwerpOrigin = {
+  leverancier: string;
+  brontype: string;
+  oorsprong: string;
+  schaal: string;
+  onbekend: string;
+};
+
+export function WaterLookup({ antwerp }: { antwerp: AntwerpOrigin }) {
   const [input, setInput] = useState("");
   const [query, setQuery] = useState("");
-  const antwerp = antwerpNames.has(query.toLowerCase()) || antwerpNeighborhoods.has(query.toLowerCase()) || antwerpPostcodes.has(query);
+  const place = query.toLowerCase().replace(/\s+/g, " ");
+  const isAntwerp = antwerpNames.has(place) || antwerpNeighborhoods.has(place) || antwerpPostcodes.has(place);
+  const mapQuery = place === "linkeroever" ? "2050" : query;
 
   function search(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,18 +49,25 @@ export function WaterLookup() {
       <div className="lookup-result" aria-live="polite">
         {query && (
           <div key={query} className="motion-reveal">
-            {antwerp ? (
+            {isAntwerp ? (
               <>
-                <h3>Water-link · regio Antwerpen</h3>
-                <p>Water-link gebruikt oppervlaktewater voor dit leveringsgebied. Het stroomgebiedbeheerplan noemt het Albertkanaal bij Oelegem en het Netekanaal bij Walem. Je postcode geeft regionale context. Vraag je leverancier om informatie voor jouw aansluiting.</p>
+                <h3>{antwerp.leverancier} · regio Antwerpen</h3>
+                <dl className="origin-facts">
+                  <div><dt>Type bron</dt><dd>{antwerp.brontype}</dd></div>
+                  <div><dt>Oorsprong</dt><dd>{antwerp.oorsprong}</dd></div>
+                </dl>
+                <p>{antwerp.schaal}</p>
                 <div className="actions">
-                  <Link className="text-link" href={"/kaart?plaats=" + encodeURIComponent(query)}>Bekijk tappunten in de buurt <span aria-hidden="true">↗</span></Link>
+                  <a className="text-link" href="#waterwinning-antwerpen">Bekijk de waterwinning <span aria-hidden="true">↓</span></a>
+                  {place !== "borsbeek" && place !== "2150" && (
+                    <Link className="text-link" href={"/kaart?plaats=" + encodeURIComponent(mapQuery)}>Bekijk tappunten in de buurt <span aria-hidden="true">↗</span></Link>
+                  )}
                 </div>
               </>
             ) : (
               <>
                 <h3>Zoek {query} bij AquaFlanders</h3>
-                <p>De eerste versie toont regionale gegevens voor Stad Antwerpen. Gebruik de officiële zoekfunctie om je waterbedrijf in andere Vlaamse gemeenten te vinden.</p>
+                <p>{antwerp.onbekend}</p>
               </>
             )}
           </div>
