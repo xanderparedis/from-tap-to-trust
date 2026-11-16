@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import wordmark from "../public/brand/wordmark.png";
 import testkit from "../public/brand/testkit.webp";
 import waterSymbol from "../public/brand/water-symbol.png";
 
@@ -8,8 +7,16 @@ export default function Home() {
   return (
     <>
       <header className="site-header frame">
-        <Link href="/" aria-label="From Tap to Trust, startpagina">
-          <Image src={wordmark} alt="" className="wordmark" unoptimized />
+        <Link href="/" className="site-brand" aria-label="From Tap to Trust, startpagina">
+          <Image
+            src="/brand/logo.svg"
+            alt=""
+            width={758}
+            height={512}
+            className="site-logo"
+            unoptimized
+          />
+          <span>From tap to trust.</span>
         </Link>
         <nav aria-label="Hoofdnavigatie">
           <a href="#de-proef">De proef</a>

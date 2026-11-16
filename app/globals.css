@@ -16,16 +16,23 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Gotham Local";
+  src: local("Gotham Book"), local("Gotham-Book"), local("Gotham Medium"), local("Gotham-Medium");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --brand-blue: #144bba;
   --brand-soft-blue: #c8d8f9;
   --brand-paper: #edf2fd;
-  --brand-ink: #173675;
   --brand-heading: "Causten", Arial, sans-serif;
-  --brand-body: "Gotham", "Causten", Arial, sans-serif;
+  --brand-body: "Gotham Local", "Causten", Arial, sans-serif;
   color-scheme: light;
   background: var(--brand-paper);
-  color: var(--brand-ink);
+  color: var(--brand-blue);
   font-family: var(--brand-body);
   font-size: 1.0625rem;
 }
@@ -45,9 +52,20 @@
   color: var(--brand-blue);
 }
 
-.wordmark {
-  width: 5rem;
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--brand-heading);
+  font-size: clamp(1rem, 3.9vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.site-logo {
+  width: clamp(2.75rem, 8vw, 5rem);
   height: auto;
+  flex: none;
 }
 
 .site-header nav a {
@@ -209,9 +227,6 @@
     min-height: 5rem;
   }
 
-  .wordmark {
-    width: 4rem;
-  }
 
   .hero,
   .trial-steps {
@@ -226,6 +241,6 @@
     height: auto;
     max-height: 23rem;
     object-fit: contain;
-    background: #f2f6fc;
+    background: var(--brand-paper);
   }
 }
