@@ -153,7 +153,7 @@ p { max-width: 67ch; }
 .button-light:focus-visible { outline-color: var(--brand-paper); }
 .hero-secondary { color: var(--brand-paper); font-family: var(--brand-heading); font-weight: 700; }
 .hero-secondary:hover { text-decoration: underline; text-underline-offset: .2em; }
-.text-link, .source-note a, .site-footer a:hover { text-decoration: underline; text-underline-offset: .2em; }
+.text-link, .site-footer a:hover { text-decoration: underline; text-underline-offset: .2em; }
 .text-link { display: inline-block; }
 .text-link:hover { text-decoration-thickness: 2px; }
 
@@ -194,7 +194,6 @@ p { max-width: 67ch; }
 .intro-text p { max-width: 53ch; }
 .panel .text-link { margin-top: .8rem; }
 .route-list { margin-top: 1rem; }
-.source-note { margin-top: 1rem; font-size: .94rem; }
 .panel h3:not(:first-child) { margin-top: 1rem; }
 .accordion { display: grid; gap: .7rem; max-width: 54rem; }
 summary {
@@ -269,6 +268,8 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
 .result-panel h3 { font-size: 1.2rem; }
 .site-footer { margin-top: 1.75rem; background: var(--brand-blue); color: var(--brand-paper); }
 .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem 1.2rem; min-height: 4.7rem; padding-block: 1rem; }
+.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.4rem; font-size: .94rem; }
+.footer-links a { display: inline-flex; align-items: center; gap: .25rem; min-height: 2.75rem; }
 .site-footer a { font-family: var(--brand-heading); font-weight: 700; }
 
 @media (max-width: 62rem) {

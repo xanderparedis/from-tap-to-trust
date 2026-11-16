@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Intro } from "../_components/content";
-import { sources } from "../_data/sources";
 import { ChlorineDemo, LeadCheck } from "./test-tools";
 
 export const metadata: Metadata = { title: "Mijn tests en resultaten" };
@@ -30,7 +29,6 @@ export default function TestsPage() {
             <p>Als je kraanwater geschikt is om te drinken en je vooral de smaak wilt aanpassen, proef het eens gekoeld uit een schone karaf. Je kunt ook een paar druppels citroen toevoegen.</p>
             <h3>Volgende stap</h3>
             <p>Vergelijk je smaakervaring voor en na het koelen. Bij een opvallende of aanhoudende verandering in smaak, geur of kleur vraag je je waterbedrijf om advies.</p>
-            <a className="text-link" href={sources.taste}>Smaaktips van De Watergroep <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
@@ -48,7 +46,6 @@ export default function TestsPage() {
             <h3>Na de test</h3>
             <p>Je krijgt de uitslag en de interpretatie van het labo of je waterbedrijf. Bespreek met de uitvoerder wat het resultaat betekent voor de geteste kraan en welke maatregelen passen bij de oorzaak.</p>
             <p>Neem bij een probleem in de binneninstallatie ook contact op met de eigenaar of gebouwbeheerder.</p>
-            <a className="text-link" href={sources.lead}>Info over loden leidingen bij de VMM <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>

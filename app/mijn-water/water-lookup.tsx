@@ -38,7 +38,6 @@ export function WaterLookup() {
                 <h3>Water-link · regio Antwerpen</h3>
                 <p>Water-link gebruikt oppervlaktewater voor dit leveringsgebied. Het stroomgebiedbeheerplan noemt het Albertkanaal bij Oelegem en het Netekanaal bij Walem. Je postcode geeft regionale context. Vraag je leverancier om informatie voor jouw aansluiting.</p>
                 <div className="actions">
-                  <a className="text-link" href={sources.antwerpWater}>Bron: stroomgebiedbeheerplan <span aria-hidden="true">↗</span></a>
                   <Link className="text-link" href={"/kaart?plaats=" + encodeURIComponent(query)}>Bekijk tappunten in de buurt <span aria-hidden="true">↗</span></Link>
                 </div>
               </>

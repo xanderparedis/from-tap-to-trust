@@ -22,7 +22,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Image src="/brand/water-symbol.png" alt="" width={28} height={28} unoptimized />
               <span>From Tap to Trust</span>
             </Link>
-            <Link href="/contact">Iets mis? Neem contact op <span aria-hidden="true">↗</span></Link>
+            <nav className="footer-links" aria-label="Links onderaan">
+              <Link href="/bronnen">Bronnen</Link>
+              <Link href="/contact">Iets mis? Neem contact op <span aria-hidden="true">↗</span></Link>
+            </nav>
           </div>
         </footer>
       </body>

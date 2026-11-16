@@ -13,7 +13,6 @@ export default function NewsPage() {
         <article className="panel">
           <h2>Wat we hoorden over kraanwater</h2>
           <p>In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur.</p>
-          <p className="source-note">Bron: academisch projectrapport v1.4, pp. 27–30.</p>
         </article>
         <article className="panel">
           <h2>Publieke tappunten in Antwerpen</h2>
