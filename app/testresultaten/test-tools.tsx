@@ -44,7 +44,7 @@ export function ChlorineDemo() {
       </form>
       <div aria-live="polite">
         {result && (
-          <div className="result-panel">
+          <div className="result-panel motion-reveal">
             <p><strong>{result.kind}: {new Intl.NumberFormat("nl-BE", { maximumSignificantDigits: 12 }).format(result.value)} mg/L</strong></p>
             <p>Je ervaring: {result.experience.toLowerCase()}.</p>
             <p>Deze demonstratie toont één parameter. Aan de hand van een chloormeting alleen kun je de drinkbaarheid van water niet beoordelen.</p>
@@ -83,7 +83,7 @@ export function LeadCheck() {
       </form>
       <div aria-live="polite">
         {result && (
-          <div className="result-panel">
+          <div className="result-panel motion-reveal">
             <h3>{result === "none" ? "Volgens je antwoord zijn er geen bekende aanwijzingen" : "Laat je situatie professioneel nakijken"}</h3>
             <p>{result === "none"
               ? "Op basis van een zelfcheck kan lood niet worden uitgesloten. Blijft er twijfel, bespreek dan een staalname met je waterbedrijf."

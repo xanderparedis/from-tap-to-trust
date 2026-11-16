@@ -31,21 +31,25 @@ export function WaterLookup() {
         <button className="button" type="submit" disabled={!input.trim()}>Zoeken</button>
       </form>
       <div className="lookup-result" aria-live="polite">
-        {query && (antwerp ? (
-          <>
-            <h3>Water-link · regio Antwerpen</h3>
-            <p>Water-link gebruikt oppervlaktewater voor dit leveringsgebied. Het stroomgebiedbeheerplan noemt het Albertkanaal bij Oelegem en het Netekanaal bij Walem. Je postcode geeft regionale context. Vraag je leverancier om informatie voor jouw aansluiting.</p>
-            <div className="actions">
-              <a className="text-link" href={sources.antwerpWater}>Bron: stroomgebiedbeheerplan <span aria-hidden="true">↗</span></a>
-              <Link className="text-link" href={"/kaart?plaats=" + encodeURIComponent(query)}>Bekijk tappunten in de buurt <span aria-hidden="true">↗</span></Link>
-            </div>
-          </>
-        ) : (
-          <>
-            <h3>Zoek {query} bij AquaFlanders</h3>
-            <p>De eerste versie toont regionale gegevens voor Stad Antwerpen. Gebruik de officiële zoekfunctie om je waterbedrijf in andere Vlaamse gemeenten te vinden.</p>
-          </>
-        ))}
+        {query && (
+          <div key={query} className="motion-reveal">
+            {antwerp ? (
+              <>
+                <h3>Water-link · regio Antwerpen</h3>
+                <p>Water-link gebruikt oppervlaktewater voor dit leveringsgebied. Het stroomgebiedbeheerplan noemt het Albertkanaal bij Oelegem en het Netekanaal bij Walem. Je postcode geeft regionale context. Vraag je leverancier om informatie voor jouw aansluiting.</p>
+                <div className="actions">
+                  <a className="text-link" href={sources.antwerpWater}>Bron: stroomgebiedbeheerplan <span aria-hidden="true">↗</span></a>
+                  <Link className="text-link" href={"/kaart?plaats=" + encodeURIComponent(query)}>Bekijk tappunten in de buurt <span aria-hidden="true">↗</span></Link>
+                </div>
+              </>
+            ) : (
+              <>
+                <h3>Zoek {query} bij AquaFlanders</h3>
+                <p>De eerste versie toont regionale gegevens voor Stad Antwerpen. Gebruik de officiële zoekfunctie om je waterbedrijf in andere Vlaamse gemeenten te vinden.</p>
+              </>
+            )}
+          </div>
+        )}
         <a className="text-link" href={sources.waterCompany}>Officiële postcodezoeker van AquaFlanders <span aria-hidden="true">↗</span></a>
       </div>
     </section>

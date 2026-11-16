@@ -85,7 +85,7 @@ export function WaterMap() {
       </div>
 
       {category === "horeca" ? (
-        <div className="panel panel-after-switcher">
+        <div className="panel panel-after-switcher motion-reveal">
           <h2>Restaurants en bars</h2>
           <p>Hier komen zaken die aan het project meedoen en waarvan bevestigd is dat je er kraanwater kunt vragen. Er zijn nog geen bevestigde locaties.</p>
         </div>
