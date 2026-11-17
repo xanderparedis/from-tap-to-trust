@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AppIcon } from "./app-icon";
+import { MediaPlaceholder } from "./media-placeholder";
 
 const primary = [
   ["/", "Start", "home"],
@@ -13,32 +14,72 @@ const primary = [
   ["/testresultaten", "Mijn tests", "tests"],
 ] as const;
 
-const newsletterLink = ["/#nieuwsbrief", "Nieuwsbrief"] as const;
-
 const secondary = [
   ["/waterproblemen", "Waterproblemen"],
+  ["/#nieuwsbrief", "Nieuwsbrief"],
   ["/contact", "Contact"],
   ["/bronnen", "Bronnen"],
 ] as const;
 
-type Menu = "desktop" | "mobile";
+const panels = [
+  {
+    label: "Herkomst", href: "/mijn-water",
+    title: "Van bron tot kraan", description: "Volg de reis van het Antwerpse drinkwater.",
+    image: "Waterwinning aan het Albertkanaal",
+    links: [["/mijn-water", "Zoek je buurt of postcode"], ["/mijn-water#waterwinning-antwerpen", "Ontdek de herkomst"]],
+  },
+  {
+    label: "Trusted by us", href: "/kaart",
+    title: "Kraanwater onderweg", description: "Bekijk waar je in Antwerpen je fles kunt bijvullen.",
+    image: "Openbaar tappunt in Antwerpen",
+    links: [["/kaart", "Open de tappuntenkaart"]],
+  },
+  {
+    label: "Mijn tests", href: "/testresultaten",
+    title: "Onderzoek je kraanwater", description: "Probeer de chloordemo of bekijk welke vervolgstap past bij je loodzelfcheck.",
+    image: "Testkit met cuvet en kleurkaart",
+    links: [["/testresultaten", "Alle tests"], ["/testresultaten#chloor", "Chloorproef"], ["/testresultaten#lood", "Loodzelfcheck"]],
+  },
+  {
+    label: "Meer", href: null,
+    title: "Volg het burgeronderzoek", description: "Lees projectnieuws, neem contact op of bekijk onze bronnen.",
+    image: "Deelnemers aan het burgeronderzoek",
+    links: secondary,
+  },
+] as const;
+
+type Menu = (typeof panels)[number]["label"] | "mobile";
 
 export function SiteNav() {
   const pathname = usePathname();
-  const [openFor, setOpenFor] = useState<{ pathname: string; menu: Menu } | null>(null);
-  const desktopToggle = useRef<HTMLButtonElement>(null);
+  const [openFor, setOpenFor] = useState<{ pathname: string; menu: Menu; pinned: boolean } | null>(null);
+  const desktopToggles = useRef<Partial<Record<Menu, HTMLButtonElement | null>>>({});
   const mobileToggle = useRef<HTMLButtonElement>(null);
-  const openMenu = openFor?.pathname === pathname ? openFor.menu : null;
+  const desktopPanel = useRef<HTMLDivElement>(null);
+  const header = useRef<HTMLElement>(null);
+  const open = openFor?.pathname === pathname ? openFor : null;
+  const panel = panels.find(({ label }) => label === open?.menu);
   const moreActive = secondary.some(([href]) => href === pathname);
 
   function toggleMenu(menu: Menu) {
-    setOpenFor(openMenu === menu ? null : { pathname, menu });
+    setOpenFor(open?.menu === menu && open.pinned ? null : { pathname, menu, pinned: true });
   }
 
-  function closeMenu() {
-    setOpenFor(null);
-    (openMenu === "desktop" ? desktopToggle : mobileToggle).current?.focus();
-  }
+  useEffect(() => {
+    if (!open) return;
+
+    function onEscape(event: KeyboardEvent) {
+      if (event.key !== "Escape" || !open) return;
+      setOpenFor(null);
+      if (header.current?.contains(document.activeElement)) {
+        const toggle = open.menu === "mobile" ? mobileToggle.current : desktopToggles.current[open.menu];
+        toggle?.focus();
+      }
+    }
+
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, [open]);
 
   const moreLinks = (links: readonly (readonly [string, string])[]) => links.map(([href, label]) => (
     <Link href={href} key={href} aria-current={pathname === href ? "page" : undefined}
@@ -48,45 +89,62 @@ export function SiteNav() {
   ));
 
   return (
-    <header className="site-header" onKeyDown={(event) => {
-      if (event.key === "Escape" && openMenu) {
-        event.preventDefault();
-        closeMenu();
-      }
-    }}>
+    <header ref={header} className="site-header">
       <div className="frame header-inner">
         <Link href="/" className="site-brand" onClick={() => setOpenFor(null)}>
           <Image src="/brand/logo.svg" alt="" width={758} height={512} className="site-logo" unoptimized />
           <span>From tap to trust.</span>
         </Link>
-        <nav className="site-nav" aria-label="Hoofdnavigatie">
-          {primary.map(([href, label]) => (
-            <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}
-              className={href === "/testresultaten" ? "nav-personal" : undefined}
-              onClick={() => setOpenFor(null)}>
-              {href === "/kaart" ? "Trusted by us" : label}
-            </Link>
+        <nav className="site-nav" aria-label="Hoofdnavigatie"
+          onPointerLeave={(event) => {
+            if (event.pointerType === "mouse" && !open?.pinned &&
+              !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
+          }}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) setOpenFor(null);
+          }}>
+          <Link href="/" aria-current={pathname === "/" ? "page" : undefined}
+            onPointerEnter={(event) => {
+              if (event.pointerType === "mouse" && !open?.pinned &&
+                !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
+            }}
+            onClick={() => setOpenFor(null)}>Start</Link>
+          {panels.map(({ label, href }) => (
+            <button key={label} ref={(node) => { desktopToggles.current[label] = node; }}
+              type="button" className={href === "/testresultaten" ? "desktop-more nav-personal" : "desktop-more"}
+              aria-controls="desktop-navigation-panel" aria-expanded={open?.menu === label}
+              data-active={(href ? href === pathname : moreActive) || undefined}
+              onPointerEnter={(event) => {
+                if (event.pointerType === "mouse" && !open?.pinned &&
+                  !desktopPanel.current?.contains(document.activeElement)) {
+                  setOpenFor({ pathname, menu: label, pinned: false });
+                }
+              }}
+              onClick={() => toggleMenu(label)}>{label} <span className="menu-chevron" aria-hidden="true" /></button>
           ))}
-          <button ref={desktopToggle} type="button" className="desktop-more" aria-controls="desktop-more-links"
-            aria-expanded={openMenu === "desktop"} data-active={moreActive || undefined}
-            onClick={() => toggleMenu("desktop")}>Meer <span className="menu-chevron" aria-hidden="true" /></button>
-          <div inert={openMenu !== "desktop"} className={openMenu === "desktop" ? "desktop-drawer is-open" : "desktop-drawer"}>
-            <div id="desktop-more-links" className="more-links desktop-more-grid">
-              <div className="desktop-more-list">{moreLinks(secondary)}</div>
-              <Link className="menu-news" href="/#nieuwsbrief" aria-labelledby="menu-news-title"
-                onClick={() => setOpenFor(null)}>
-                <span className="menu-news-title" id="menu-news-title">Nieuwsbrief</span>
-                <span>Volg het burgeronderzoek en de ontwikkeling van de testkit.</span>
-                <AppIcon name="arrow" />
-              </Link>
-            </div>
+          <div id="desktop-navigation-panel" ref={desktopPanel} inert={!panel}
+            className={panel ? "desktop-drawer is-open" : "desktop-drawer"}>
+            {panel && (
+              <div key={panel.label} className="more-links desktop-more-grid">
+                <div className="desktop-more-list">{moreLinks(panel.links)}</div>
+                <div className="menu-feature">
+                  <MediaPlaceholder label={panel.image} />
+                  <p className="menu-feature-title">{panel.title}</p>
+                  <p>{panel.description}</p>
+                </div>
+              </div>
+            )}
           </div>
         </nav>
       </div>
 
-      {openMenu && (
-        <button className={"menu-backdrop menu-backdrop-" + openMenu} type="button"
-          aria-label="Sluit het menu" tabIndex={-1} onClick={closeMenu} />
+      {open?.pinned && (
+        <button className={"menu-backdrop menu-backdrop-" + (panel ? "desktop" : "mobile")} type="button"
+          aria-label="Sluit het menu" tabIndex={-1} onClick={() => {
+            setOpenFor(null);
+            const toggle = panel ? desktopToggles.current[panel.label] : mobileToggle.current;
+            toggle?.focus();
+          }} />
       )}
       <div className="app-dock">
         <nav className="dock-tabs" aria-label="App-navigatie">
@@ -98,14 +156,14 @@ export function SiteNav() {
             </Link>
           ))}
           <button ref={mobileToggle} type="button" className="dock-item dock-more" aria-controls="platform-nav"
-            aria-expanded={openMenu === "mobile"} data-active={moreActive || undefined}
+            aria-expanded={open?.menu === "mobile"} data-active={moreActive || undefined}
             onClick={() => toggleMenu("mobile")}>
             <span className="dock-icon"><AppIcon name="more" /></span>
             <span>Meer</span>
           </button>
         </nav>
-        <div inert={openMenu !== "mobile"} className={openMenu === "mobile" ? "nav-drawer is-open" : "nav-drawer"}>
-          <nav id="platform-nav" className="more-links" aria-label="Meer pagina’s">{moreLinks([secondary[0], newsletterLink, ...secondary.slice(1)])}</nav>
+        <div inert={open?.menu !== "mobile"} className={open?.menu === "mobile" ? "nav-drawer is-open" : "nav-drawer"}>
+          <nav id="platform-nav" className="more-links" aria-label="Meer pagina’s">{moreLinks(secondary)}</nav>
         </div>
       </div>
     </header>

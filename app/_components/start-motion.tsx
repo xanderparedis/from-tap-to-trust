@@ -7,6 +7,34 @@ export function StartMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const stage = root.current?.querySelector<HTMLElement>("[data-film-stage]");
+    const motion = window.matchMedia("(prefers-reduced-motion: no-preference)");
+    if (!stage || !motion.matches) return;
+
+    let frame = 0;
+    function queueFrame() {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        const distance = Math.min(window.innerHeight * 0.5, 430);
+        const progress = Math.min(1, Math.max(0, window.scrollY / distance));
+        stage?.style.setProperty("--film-progress", progress.toFixed(3));
+      });
+    }
+
+    window.addEventListener("scroll", queueFrame, { passive: true });
+    window.addEventListener("resize", queueFrame);
+    queueFrame();
+
+    return () => {
+      window.removeEventListener("scroll", queueFrame);
+      window.removeEventListener("resize", queueFrame);
+      window.cancelAnimationFrame(frame);
+      stage.style.removeProperty("--film-progress");
+    };
+  }, []);
+
+  useEffect(() => {
     if (typeof IntersectionObserver !== "function" ||
       !window.matchMedia("(prefers-reduced-motion: no-preference)").matches) return;
 

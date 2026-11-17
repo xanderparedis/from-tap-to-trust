@@ -8,6 +8,7 @@
     "label": "Burgeronderzoek naar kraanwater",
     "titel": "Leer je kraanwater kennen.",
     "intro": "Van bron tot kraan. Ontdek waar je water vandaan komt, vind een tappunt in de buurt en bekijk hoe een thuistest werkt.",
+    "videoPlaceholder": "Van de kraan naar de testkit",
     "functiesTitel": "Wat wil je doen?",
     "functies": [
       { "titel": "Ken de herkomst", "tekst": "Zoek op je buurt of postcode en volg de weg van de bron tot je kraan.", "adres": "/mijn-water", "actie": "Zoek je buurt" },
@@ -27,18 +28,27 @@
         "rubriek": "Onderzoek",
         "titel": "Wat we hoorden over kraanwater",
         "tekst": "In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur.",
-        "afbeelding": null,
+        "beeldPlaceholder": "Straatgesprek met deelnemers",
         "link": null
       },
       {
         "rubriek": "Project",
         "titel": "Het ontwerp van de testkit",
-        "tekst": "We werken aan een kit waarmee deelnemers thuis chloor in kraanwater kunnen meten. Dit is het ontwerp voor de verpakking.",
-        "afbeelding": {
-          "pad": "/brand/testkit.webp",
-          "alt": "Blauwe verpakkingen met het logo van From Tap to Trust"
-        },
+        "tekst": "We werken aan een kit waarmee deelnemers thuis chloor in kraanwater kunnen meten. In dit artikel tonen we hoe de verpakking en de onderdelen vorm krijgen.",
+        "beeldPlaceholder": "Testkit en onderdelen",
         "link": null
+      },
+      {
+        "rubriek": "Voorbeeld · Evenement",
+        "titel": "Samen kraanwater proeven",
+        "tekst": "Op een buurtmoment zouden deelnemers hun smaakervaring kunnen vergelijken en de testkit uitproberen. Hier komen later de plaats en datum.",
+        "beeldPlaceholder": "Proeftafel met glazen water"
+      },
+      {
+        "rubriek": "Voorbeeld · Partners",
+        "titel": "Wie helpt het onderzoek vooruit?",
+        "tekst": "Hier stellen we later de organisaties voor die workshops, materiaal of expertise bijdragen aan het burgeronderzoek.",
+        "beeldPlaceholder": "Portret of logo van een projectpartner"
       }
     ]
   },

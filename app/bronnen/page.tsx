@@ -21,6 +21,7 @@ const references = [
     links: [
       ["VMM – Leidingen en toestellen in je gebouw", sources.waterInstallation],
       ["VMM – Loden leidingen herkennen en vervangen", sources.lead],
+      ["Health Canada – Vrij, totaal en gebonden chloor", sources.chlorine],
       ["De Watergroep – Drinkwaterkwaliteit en smaaktips", sources.taste],
       ["AquaFlanders – Contact met je waterbedrijf", sources.waterContact],
     ],

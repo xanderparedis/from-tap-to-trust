@@ -5,12 +5,13 @@ import { NextLink } from "./_components/content";
 import { MascotSlot } from "./_components/mascot-slot";
 import { StartMotion } from "./_components/start-motion";
 import { start, nieuwsbrief } from "../inhoud.json";
-import testkit from "../public/brand/testkit.webp";
+import { MediaPlaceholder } from "./_components/media-placeholder";
 
 type NewsletterEntry = {
   rubriek: string;
   titel: string;
   tekst: string;
+  beeldPlaceholder?: string;
   afbeelding?: { pad: string; alt: string } | null;
   link?: { adres: string; tekst: string } | null;
 };
@@ -28,8 +29,10 @@ export default function Home() {
           <p>{start.intro}</p>
           <a className="button start-button" href="#ontdek">Ontdek de app <span aria-hidden="true">↓</span></a>
         </div>
-        <div className="start-hero-art">
-          <Image src={testkit} alt="Ontwerp van de From Tap to Trust-testkit" unoptimized preload />
+        <div className="start-hero-art" data-film-stage>
+          <div className="start-film">
+            <MediaPlaceholder kind="Video" label={start.videoPlaceholder} />
+          </div>
           <MascotSlot slot="start" />
         </div>
       </section>
@@ -65,17 +68,19 @@ export default function Home() {
         </header>
 
         <div className="newsletter-feed">
-          {entries.map(({ rubriek, titel, tekst, afbeelding, link }) => (
-            <article data-enter className={afbeelding ? "newsletter-entry has-image" : "newsletter-entry"} key={titel}>
+          {entries.map(({ rubriek, titel, tekst, afbeelding, beeldPlaceholder, link }) => (
+            <article data-enter className={afbeelding || beeldPlaceholder ? "newsletter-entry has-image" : "newsletter-entry"} key={titel}>
               <div className="newsletter-copy">
                 <p className="newsletter-category">{rubriek}</p>
                 <h3>{titel}</h3>
                 <p>{tekst}</p>
                 {link && <NextLink href={link.adres}>{link.tekst}</NextLink>}
               </div>
-              {afbeelding && (
+              {afbeelding ? (
                 <Image className="newsletter-image" src={afbeelding.pad} alt={afbeelding.alt}
                   width={880} height={735} unoptimized />
+              ) : beeldPlaceholder && (
+                <MediaPlaceholder label={beeldPlaceholder} />
               )}
             </article>
           ))}

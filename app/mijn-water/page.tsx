@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Intro } from "../_components/content";
+import { MediaPlaceholder } from "../_components/media-placeholder";
 import { herkomst } from "../../inhoud.json";
 import { WaterLookup } from "./water-lookup";
 
@@ -32,6 +33,9 @@ export default function WaterPage() {
       </section>
       <section className="section-space" aria-labelledby="water-route">
         <h2 id="water-route">{route.titel}</h2>
+        <div className="water-route-media">
+          <MediaPlaceholder kind="Illustratie" label="De reis van de Maas naar je kraan" />
+        </div>
         <ol className="card-grid route-list">
           {route.stappen.map((step) => (
             <li className="panel" key={step.titel}><h3>{step.titel}</h3><p>{step.tekst}</p></li>
