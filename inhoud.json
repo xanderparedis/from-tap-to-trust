@@ -1,7 +1,23 @@
 {
   "mascottes": {
+    "start": null,
     "nieuwsbrief": null,
     "paginas": null
+  },
+  "start": {
+    "label": "Burgeronderzoek naar kraanwater",
+    "titel": "Leer je kraanwater kennen.",
+    "intro": "Van bron tot kraan. Ontdek waar je water vandaan komt, vind een tappunt in de buurt en bekijk hoe een thuistest werkt.",
+    "functiesTitel": "Wat wil je doen?",
+    "functies": [
+      { "titel": "Ken de herkomst", "tekst": "Zoek op je buurt of postcode en volg de weg van de bron tot je kraan.", "adres": "/mijn-water", "actie": "Zoek je buurt" },
+      { "titel": "Vul onderweg bij", "tekst": "Zoek een openbaar watertappunt op de kaart van Antwerpen.", "adres": "/kaart", "actie": "Open de kaart" },
+      { "titel": "Verken de thuistest", "tekst": "Bekijk een voorbeeldresultaat voor chloor of doorloop de loodzelfcheck.", "adres": "/testresultaten", "actie": "Naar mijn tests" }
+    ],
+    "meer": {
+      "titel": "Hoe werkt het burgeronderzoek?",
+      "tekst": "We onderzoeken hoe mensen hun kraanwater ervaren. Met de thuistest willen we een chloormeting naast die ervaring leggen. De app toont alvast hoe de terugkoppeling eruit kan zien."
+    }
   },
   "nieuwsbrief": {
     "titel": "Nieuwsbrief",
