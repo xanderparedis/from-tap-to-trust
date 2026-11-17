@@ -1,68 +1,45 @@
 import Image from "next/image";
-import Link from "next/link";
-import testkit from "../public/brand/testkit.webp";
 import { NextLink } from "./_components/content";
-import { AppIcon } from "./_components/app-icon";
-import { startpagina } from "../inhoud.json";
+import { MascotSlot } from "./_components/mascot-slot";
+import { nieuwsbrief } from "../inhoud.json";
 
-const shortcuts = [
-  ["/mijn-water", "Herkomst", "water"],
-  ["/waterproblemen", "Problemen", "help"],
-  ["/kaart", "Tappunten", "map"],
-  ["/testresultaten", "Mijn tests", "tests"],
-] as const;
+type NewsletterEntry = {
+  rubriek: string;
+  titel: string;
+  tekst: string;
+  afbeelding?: { pad: string; alt: string } | null;
+  link?: { adres: string; tekst: string } | null;
+};
+
+const entries: NewsletterEntry[] = nieuwsbrief.berichten;
 
 export default function Home() {
   return (
-    <>
-      <section className="home-hero">
-        <div className="hero-content">
-          <p className="section-label">{startpagina.label}</p>
-          <h1>{startpagina.titel}</h1>
-          <p>{startpagina.intro}</p>
-          <div className="actions">
-            <Link className="button button-accent" href="/mijn-water">Ontdek je water <span aria-hidden="true">↗</span></Link>
-            <Link className="hero-secondary" href="/testresultaten">Mijn tests <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-        <Image src={testkit} alt="Ontwerp van de blauwe From Tap to Trust-testkit" className="hero-photo" unoptimized preload />
-      </section>
-
-      <section className="app-shortcuts" aria-labelledby="shortcuts-title">
-        <h2 id="shortcuts-title">Snel naar</h2>
-        <div className="shortcut-grid">
-          {shortcuts.map(([href, label, icon]) => (
-            <Link key={href} className="shortcut" href={href}>
-              <span className="shortcut-icon"><AppIcon name={icon} /></span>
-              <span>{label}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-space" aria-labelledby="platform-title">
-        <div className="section-heading">
-          <h2 id="platform-title">{startpagina.hoofdlijst}</h2>
-          <NextLink href="/wat-is-nieuw">Wat is nieuw?</NextLink>
-        </div>
-        <div className="card-grid">
-          {startpagina.kaarten.map((topic) => (
-            <Link className="feature-card" key={topic.link} href={topic.link}>
-              <h3>{topic.titel}</h3>
-              <p>{topic.tekst}</p>
-              <span className="card-arrow" aria-hidden="true">↗</span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section id="de-proef" className="home-test" aria-labelledby="home-test-title">
+    <section className="newsletter" aria-labelledby="newsletter-title">
+      <header className="newsletter-header">
         <div>
-          <h2 id="home-test-title">{startpagina.testTitel}</h2>
-          <p>{startpagina.testUitleg}</p>
+          <h1 id="newsletter-title">{nieuwsbrief.titel}</h1>
+          <p>{nieuwsbrief.intro}</p>
         </div>
-        <Link className="button" href="/testresultaten">Naar mijn tests <span aria-hidden="true">↗</span></Link>
-      </section>
-    </>
+        <MascotSlot slot="nieuwsbrief" />
+      </header>
+
+      <div className="newsletter-feed">
+        {entries.map(({ rubriek, titel, tekst, afbeelding, link }) => (
+          <article className={afbeelding ? "newsletter-entry has-image" : "newsletter-entry"} key={titel}>
+            <div className="newsletter-copy">
+              <p className="newsletter-category">{rubriek}</p>
+              <h2>{titel}</h2>
+              <p>{tekst}</p>
+              {link && <NextLink href={link.adres}>{link.tekst}</NextLink>}
+            </div>
+            {afbeelding && (
+              <Image className="newsletter-image" src={afbeelding.pad} alt={afbeelding.alt}
+                width={880} height={735} unoptimized />
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }

@@ -1,10 +1,14 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { MascotSlot } from "./mascot-slot";
 
 export function Intro({ section, title, children }: { section: string; title: string; children: ReactNode }) {
   return (
     <header className="page-intro">
-      <p className="section-label">{section}</p>
+      <div className="page-intro-top">
+        <p className="section-label">{section}</p>
+        <MascotSlot slot="paginas" />
+      </div>
       <h1>{title}</h1>
       <div className="intro-text">{children}</div>
     </header>

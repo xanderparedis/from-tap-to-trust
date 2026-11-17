@@ -14,14 +14,13 @@ const primary = [
 ] as const;
 
 const secondary = [
-  ["/wat-is-nieuw", "Wat is nieuw?"],
   ["/waterproblemen", "Waterproblemen"],
   ["/contact", "Contact"],
   ["/bronnen", "Bronnen"],
 ] as const;
 
 const desktop = [
-  secondary[0], primary[1], secondary[1], ["/kaart", "Trusted by us"], primary[3], secondary[2],
+  ["/", "Nieuwsbrief"], primary[1], secondary[0], ["/kaart", "Trusted by us"], primary[3], secondary[1],
 ] as const;
 
 export function SiteNav() {

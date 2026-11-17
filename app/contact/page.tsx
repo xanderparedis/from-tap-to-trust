@@ -25,7 +25,7 @@ export default function ContactPage() {
         <section className="panel">
           <h2>Het onderzoeksplatform</h2>
           <p>Het contactkanaal van het projectteam volgt bij de start van de proef.</p>
-          <Link className="text-link" href="/wat-is-nieuw">Volg de projectupdates <span aria-hidden="true">↗</span></Link>
+          <Link className="text-link" href="/">Lees de nieuwsbrief <span aria-hidden="true">↗</span></Link>
         </section>
       </div>
     </>

@@ -2,7 +2,9 @@
 
 ## Zelf inhoud aanpassen
 
-Open [inhoud.json](inhoud.json). Daar staan de teksten en kaarten van de **startpagina**, **Wat is nieuw?** en **Herkomst**. Pas de tekst tussen aanhalingstekens aan. Om een nieuwskaart toe te voegen, kopieer je in `watIsNieuw.kaarten` een kaart, zet je een komma tussen de kaarten en vul je een unieke titel en tekst in. Het blok `link` is optioneel.
+Open [inhoud.json](inhoud.json). Daar staan de teksten van **Nieuwsbrief** en **Herkomst**. Kopieer een bericht in `nieuwsbrief.berichten` om een update, evenement of sponsor toe te voegen. Vul `rubriek`, een unieke `titel` en `tekst` in. Zet `afbeelding` en `link` op `null` als je die bij dit bericht weglaat. Kijk naar de andere berichten voor de opbouw.
+
+Onder `mascottes` zijn er twee beeldplekken: `nieuwsbrief` en `paginas`. Plaats een illustratie in `public/brand` en vervang `null` door bijvoorbeeld `{"pad": "/brand/mascotte.webp", "alt": "Beschrijving van de mascotte"}`.
 
 Open de lokale versie om je aanpassing te bekijken:
 

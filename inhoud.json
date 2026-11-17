@@ -1,52 +1,28 @@
 {
-  "startpagina": {
-    "label": "Burgeronderzoek naar kraanwater",
-    "titel": "Leer je kraanwater kennen.",
-    "intro": "Waar komt het vandaan, hoe smaakt het en waar vul je onderweg bij? Van je eigen kraan tot het tappunt om de hoek.",
-    "hoofdlijst": "Jouw water, van dichtbij",
-    "kaarten": [
-      {
-        "titel": "Waar komt mijn water vandaan?",
-        "tekst": "Volg je kraanwater van bron tot kraan en vind je waterbedrijf.",
-        "link": "/mijn-water"
-      },
-      {
-        "titel": "Iets anders aan je water?",
-        "tekst": "Zoek uit wat je kunt doen bij vreemde smaak, geur of kleur.",
-        "link": "/waterproblemen"
-      },
-      {
-        "titel": "Vul bij onderweg",
-        "tekst": "Vind publieke drinkwaterpunten en ontdek de Trusted by us-kaart.",
-        "link": "/kaart"
-      }
-    ],
-    "testTitel": "Van thuistest naar resultaat",
-    "testUitleg": "Bekijk een voorbeeld van een chloormeting of doorloop de zelfcheck voor loden leidingen."
+  "mascottes": {
+    "nieuwsbrief": null,
+    "paginas": null
   },
-  "watIsNieuw": {
-    "titel": "Wat is nieuw?",
-    "intro": "Volg wat we uit het burgeronderzoek leren en wat je al kunt uitproberen.",
-    "kaarten": [
+  "nieuwsbrief": {
+    "titel": "Nieuwsbrief",
+    "intro": "Updates van From Tap to Trust over ons burgeronderzoek naar kraanwater.",
+    "berichten": [
       {
+        "rubriek": "Onderzoek",
         "titel": "Wat we hoorden over kraanwater",
-        "tekst": "In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur."
+        "tekst": "In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur.",
+        "afbeelding": null,
+        "link": null
       },
       {
-        "titel": "Publieke tappunten in Antwerpen",
-        "tekst": "Zoek een drinkwaterpunt op de kaart en filter de stadsgegevens per district of postcode.",
-        "link": {
-          "tekst": "Bekijk de kaart",
-          "adres": "/kaart"
-        }
-      },
-      {
-        "titel": "Probeer de testroutes",
-        "tekst": "Verken hoe een chloormeting wordt teruggekoppeld en welke stappen je kunt zetten als je twijfelt over loden leidingen.",
-        "link": {
-          "tekst": "Naar mijn tests",
-          "adres": "/testresultaten"
-        }
+        "rubriek": "Project",
+        "titel": "Het ontwerp van de testkit",
+        "tekst": "We werken aan een kit waarmee deelnemers thuis chloor in kraanwater kunnen meten. Dit is het ontwerp voor de verpakking.",
+        "afbeelding": {
+          "pad": "/brand/testkit.webp",
+          "alt": "Blauwe verpakkingen met het logo van From Tap to Trust"
+        },
+        "link": null
       }
     ]
   },
