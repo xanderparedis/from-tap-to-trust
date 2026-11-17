@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Intro } from "../_components/content";
 import { MediaPlaceholder } from "../_components/media-placeholder";
-import { ChlorineDemo, LeadCheck } from "./test-tools";
+import { ChlorineDemo } from "./test-tools";
+import { LeadCheck } from "./lead-check";
 
 export const metadata: Metadata = { title: "Mijn tests en resultaten" };
 
@@ -49,7 +50,7 @@ export default function TestsPage() {
         <div className="section-heading">
           <div>
             <h2 id="lead-title">Lood</h2>
-            <p>Van vragen over je woning naar advies over professionele staalname.</p>
+            <p>Doorloop de loodzelfcheck in vijf vragen en bekijk welke vervolgstap bij je woning past.</p>
           </div>
         </div>
         <div className="feature-grid test-grid">

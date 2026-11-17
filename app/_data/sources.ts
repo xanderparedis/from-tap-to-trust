@@ -8,6 +8,7 @@ export const sources = {
   distributionQuality: "https://vmm.vlaanderen.be/feiten-cijfers/water/drinkwater/kwaliteit-drinkwater-per-leveringsgebied",
   waterInstallation: "https://vmm.vlaanderen.be/beleid/waterbeleid/drinkwater/goede-leidingen-in-je-gebouw",
   lead: "https://vmm.vlaanderen.be/waterloket/gezond-water/loden-leidingen",
+  leadHousing: "https://www.vlaanderen.be/bouwen-wonen-en-energie/water/leidingen-en-afvoer/loden-waterleidingen",
   chlorine: "https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidelines-canadian-drinking-water-quality-chlorine-guideline-technical-document/page-3-guidelines-canadian-drinking-water-quality-chlorine-guideline-technical-document.html",
   taste: "https://www.dewatergroep.be/nl-be/drinkwater/veelgestelde-vragen/drinkwaterkwaliteit",
   fountains: "https://www.antwerpen.be/info/62aaf431afdf37202f5b9592/drinkwaterfonteinen-district-antwerpen",
