@@ -52,6 +52,20 @@
       }
     ]
   },
+  "webshop": {
+    "intro": "Bekijk de drinkfles van From Tap to Trust. Neem je kraanwater mee en vul onderweg bij.",
+    "producten": [
+      {
+        "id": "drinkfles",
+        "titel": "From Tap to Trust-drinkfles",
+        "tekst": "Een hervulbare fles voor je dagelijkse kraanwater, thuis en onderweg.",
+        "beeldPlaceholder": "Productfoto van de drinkfles",
+        "afbeelding": null,
+        "prijs": null,
+        "bestelLink": null
+      }
+    ]
+  },
   "herkomst": {
     "titel": "Waar komt mijn water vandaan?",
     "intro": "Zoek je buurt, district of postcode. Voor Stad Antwerpen tonen we het waterbedrijf en leggen we uit waar het drinkwater in de regio vandaan komt.",

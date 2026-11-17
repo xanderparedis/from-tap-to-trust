@@ -6,6 +6,8 @@ Open [inhoud.json](inhoud.json). Daar staan de teksten van **Start**, **Nieuwsbr
 
 Onder `mascottes` zijn er drie beeldplekken: `start`, `nieuwsbrief` en `paginas`. Plaats een illustratie in `public/brand` en vervang `null` door bijvoorbeeld `{"pad": "/brand/mascotte.webp", "alt": "Beschrijving van de mascotte"}`.
 
+Pas de drinkflessen aan onder `webshop.producten`. Vul `prijs` in euro in en voeg een besteladres toe bij `bestelLink` zodra de verkoop start. Via `afbeelding` vervang je de productplaceholder.
+
 Open de lokale versie om je aanpassing te bekijken:
 
 ```powershell

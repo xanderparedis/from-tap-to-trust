@@ -12,6 +12,7 @@ const primary = [
   ["/mijn-water", "Herkomst", "water"],
   ["/kaart", "Kaart", "map"],
   ["/testresultaten", "Mijn tests", "tests"],
+  ["/webshop", "Webshop", "shop"],
 ] as const;
 
 const secondary = [
@@ -97,6 +98,7 @@ export function SiteNav() {
       const current = Math.max(0, Math.min(window.scrollY, limit));
       const delta = current - previous;
       previous = current;
+      element.toggleAttribute("data-past-top", current > 1);
 
       if (current <= 64) {
         distance = 0;
@@ -120,10 +122,12 @@ export function SiteNav() {
       if (!frame) frame = window.requestAnimationFrame(updateHeader);
     }
 
+    updateHeader();
     window.addEventListener("scroll", queueUpdate, { passive: true });
     return () => {
       window.removeEventListener("scroll", queueUpdate);
       window.cancelAnimationFrame(frame);
+      element.removeAttribute("data-past-top");
       element.removeAttribute("data-scrolled-away");
     };
   }, [pathname]);
@@ -152,7 +156,7 @@ export function SiteNav() {
   }
 
   return (
-    <header ref={header} className="site-header" data-menu-pinned={Boolean(panel && open?.pinned) || undefined}>
+    <header ref={header} className="site-header" data-home={pathname === "/" || undefined} data-menu-pinned={Boolean(panel && open?.pinned) || undefined}>
       <div className="site-topbar">
         <div className="frame header-inner">
           <Link href="/" className="site-brand" onClick={() => setOpenFor(null)}>
@@ -179,7 +183,10 @@ export function SiteNav() {
               {panels.slice(0, 2).map(desktopTrigger)}
             </div>
             <div className="site-nav-group">
-              {panels.slice(2).map(desktopTrigger)}
+              {panels.slice(2, 3).map(desktopTrigger)}
+              <Link href="/webshop" aria-current={pathname === "/webshop" ? "page" : undefined}
+                onClick={() => setOpenFor(null)}>Webshop</Link>
+              {panels.slice(3).map(desktopTrigger)}
             </div>
             <div id="desktop-navigation-panel" ref={desktopPanel} inert={!panel}
               data-align={panel && panels.indexOf(panel) < 2 ? "start" : undefined}
