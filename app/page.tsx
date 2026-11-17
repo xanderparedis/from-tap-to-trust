@@ -22,23 +22,27 @@ const featureIcons = { "/mijn-water": "water", "/kaart": "map", "/testresultaten
 export default function Home() {
   return (
     <StartMotion>
-      <section className="start-hero" aria-labelledby="start-title">
-        <div className="start-hero-copy">
-          <p className="section-label">{start.label}</p>
-          <h1 id="start-title">{start.titel}</h1>
-          <p>{start.intro}</p>
-          <a className="button start-button" href="#ontdek">Ontdek de app <span aria-hidden="true">↓</span></a>
-        </div>
-        <div className="start-hero-art" data-film-stage>
-          <div className="start-film">
-            <MediaPlaceholder kind="Video" label={start.videoPlaceholder} />
+      <div className="start-film-track" data-film-track>
+        <section className="start-scene" data-film-scene aria-labelledby="start-title">
+          <div className="start-hero frame">
+            <div className="start-hero-copy">
+              <p className="section-label">{start.label}</p>
+              <h1 id="start-title">{start.titel}</h1>
+              <p>{start.intro}</p>
+              <a className="button start-button" href="#ontdek">Ontdek de app <span aria-hidden="true">↓</span></a>
+            </div>
+            <div className="start-hero-art" data-film-target>
+              <div className="start-film">
+                <MediaPlaceholder kind="Video" label={start.videoPlaceholder} />
+              </div>
+              <MascotSlot slot="start" />
+            </div>
           </div>
-          <MascotSlot slot="start" />
-        </div>
-      </section>
+        </section>
+      </div>
 
-      <section id="ontdek" className="start-features" aria-labelledby="start-features-title">
-        <h2 id="start-features-title">{start.functiesTitel}</h2>
+      <section id="ontdek" className="frame start-features" aria-labelledby="start-features-title">
+        <h2 id="start-features-title" data-enter>{start.functiesTitel}</h2>
         <div className="start-grid">
           {start.functies.map(({ titel, tekst, adres, actie }) => (
             <Link className="start-tile" data-enter key={adres} href={adres}>
@@ -51,14 +55,14 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <details className="panel start-details">
+        <details className="panel start-details" data-enter>
           <summary>{start.meer.titel}</summary>
           <p>{start.meer.tekst}</p>
           <NextLink href="/waterproblemen">Wat kan er misgaan met kraanwater?</NextLink>
         </details>
       </section>
 
-      <section id="nieuwsbrief" className="newsletter" aria-labelledby="newsletter-title">
+      <section id="nieuwsbrief" className="frame newsletter" aria-labelledby="newsletter-title">
         <header className="newsletter-header" data-enter>
           <div>
             <h2 id="newsletter-title">{nieuwsbrief.titel}</h2>
