@@ -81,6 +81,53 @@ export function SiteNav() {
     return () => window.removeEventListener("keydown", onEscape);
   }, [open]);
 
+  useEffect(() => {
+    const element = header.current;
+    if (!element) return;
+
+    let previous = window.scrollY;
+    let direction = 0;
+    let distance = 0;
+    let frame = 0;
+
+    function updateHeader() {
+      frame = 0;
+      if (!element) return;
+      const limit = document.documentElement.scrollHeight - window.innerHeight;
+      const current = Math.max(0, Math.min(window.scrollY, limit));
+      const delta = current - previous;
+      previous = current;
+
+      if (current <= 64) {
+        distance = 0;
+        element.removeAttribute("data-scrolled-away");
+        return;
+      }
+      if (delta === 0) return;
+
+      const nextDirection = Math.sign(delta);
+      distance = Math.abs(delta) + (direction === nextDirection ? distance : 0);
+      direction = nextDirection;
+      if (direction < 0 && distance >= 8) {
+        element.removeAttribute("data-scrolled-away");
+      } else if (direction > 0 && distance >= 24 && !element.hasAttribute("data-scrolled-away")) {
+        element.setAttribute("data-scrolled-away", "");
+        setOpenFor((currentMenu) => currentMenu?.pinned ? currentMenu : null);
+      }
+    }
+
+    function queueUpdate() {
+      if (!frame) frame = window.requestAnimationFrame(updateHeader);
+    }
+
+    window.addEventListener("scroll", queueUpdate, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", queueUpdate);
+      window.cancelAnimationFrame(frame);
+      element.removeAttribute("data-scrolled-away");
+    };
+  }, [pathname]);
+
   const moreLinks = (links: readonly (readonly [string, string])[]) => links.map(([href, label]) => (
     <Link href={href} key={href} aria-current={pathname === href ? "page" : undefined}
       onClick={() => setOpenFor(null)}>
@@ -88,54 +135,68 @@ export function SiteNav() {
     </Link>
   ));
 
+  function desktopTrigger({ label, href }: (typeof panels)[number]) {
+    return (
+      <button key={label} ref={(node) => { desktopToggles.current[label] = node; }}
+        type="button" className={href === "/testresultaten" ? "desktop-more nav-personal" : "desktop-more"}
+        aria-controls="desktop-navigation-panel" aria-expanded={open?.menu === label}
+        data-active={(href ? href === pathname : moreActive) || undefined}
+        onPointerEnter={(event) => {
+          if (event.pointerType === "mouse" && !open?.pinned &&
+            !desktopPanel.current?.contains(document.activeElement)) {
+            setOpenFor({ pathname, menu: label, pinned: false });
+          }
+        }}
+        onClick={() => toggleMenu(label)}>{label} <span className="menu-chevron" aria-hidden="true" /></button>
+    );
+  }
+
   return (
-    <header ref={header} className="site-header">
-      <div className="frame header-inner">
-        <Link href="/" className="site-brand" onClick={() => setOpenFor(null)}>
-          <Image src="/brand/logo.svg" alt="" width={758} height={512} className="site-logo" unoptimized />
-          <span>From tap to trust.</span>
-        </Link>
-        <nav className="site-nav" aria-label="Hoofdnavigatie"
-          onPointerLeave={(event) => {
-            if (event.pointerType === "mouse" && !open?.pinned &&
-              !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
-          }}
-          onBlur={(event) => {
-            if (!event.currentTarget.contains(event.relatedTarget)) setOpenFor(null);
-          }}>
-          <Link href="/" aria-current={pathname === "/" ? "page" : undefined}
-            onPointerEnter={(event) => {
+    <header ref={header} className="site-header" data-menu-pinned={Boolean(panel && open?.pinned) || undefined}>
+      <div className="site-topbar">
+        <div className="frame header-inner">
+          <Link href="/" className="site-brand" onClick={() => setOpenFor(null)}>
+            <Image src="/brand/logo.svg" alt="" width={758} height={512} className="site-logo" unoptimized />
+            <span className="brand-wordmark">
+              From <strong>tap</strong> to <strong>trust</strong><span className="brand-period" aria-hidden="true" />
+            </span>
+          </Link>
+          <nav className="site-nav" aria-label="Hoofdnavigatie"
+            onPointerLeave={(event) => {
               if (event.pointerType === "mouse" && !open?.pinned &&
                 !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
             }}
-            onClick={() => setOpenFor(null)}>Start</Link>
-          {panels.map(({ label, href }) => (
-            <button key={label} ref={(node) => { desktopToggles.current[label] = node; }}
-              type="button" className={href === "/testresultaten" ? "desktop-more nav-personal" : "desktop-more"}
-              aria-controls="desktop-navigation-panel" aria-expanded={open?.menu === label}
-              data-active={(href ? href === pathname : moreActive) || undefined}
-              onPointerEnter={(event) => {
-                if (event.pointerType === "mouse" && !open?.pinned &&
-                  !desktopPanel.current?.contains(document.activeElement)) {
-                  setOpenFor({ pathname, menu: label, pinned: false });
-                }
-              }}
-              onClick={() => toggleMenu(label)}>{label} <span className="menu-chevron" aria-hidden="true" /></button>
-          ))}
-          <div id="desktop-navigation-panel" ref={desktopPanel} inert={!panel}
-            className={panel ? "desktop-drawer is-open" : "desktop-drawer"}>
-            {panel && (
-              <div key={panel.label} className="more-links desktop-more-grid">
-                <div className="desktop-more-list">{moreLinks(panel.links)}</div>
-                <div className="menu-feature">
-                  <MediaPlaceholder label={panel.image} />
-                  <p className="menu-feature-title">{panel.title}</p>
-                  <p>{panel.description}</p>
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setOpenFor(null);
+            }}>
+            <div className="site-nav-group">
+              <Link href="/" aria-current={pathname === "/" ? "page" : undefined}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse" && !open?.pinned &&
+                    !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
+                }}
+                onClick={() => setOpenFor(null)}>Start</Link>
+              {panels.slice(0, 2).map(desktopTrigger)}
+            </div>
+            <div className="site-nav-group">
+              {panels.slice(2).map(desktopTrigger)}
+            </div>
+            <div id="desktop-navigation-panel" ref={desktopPanel} inert={!panel}
+              data-align={panel && panels.indexOf(panel) < 2 ? "start" : undefined}
+              className={panel ? "desktop-drawer is-open" : "desktop-drawer"}>
+              {panel && (
+                <div key={panel.label} className="more-links desktop-more-grid">
+                  <div className="desktop-more-list">{moreLinks(panel.links)}</div>
+                  <div className="menu-feature">
+                    <MediaPlaceholder label={panel.image} />
+                    <p className="menu-feature-title">{panel.title}</p>
+                    <p>{panel.description}</p>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </nav>
+              )}
+            </div>
+          </nav>
+        </div>
       </div>
 
       {open?.pinned && (
