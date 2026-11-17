@@ -2,7 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import testkit from "../public/brand/testkit.webp";
 import { NextLink } from "./_components/content";
+import { AppIcon } from "./_components/app-icon";
 import { startpagina } from "../inhoud.json";
+
+const shortcuts = [
+  ["/mijn-water", "Herkomst", "water"],
+  ["/waterproblemen", "Problemen", "help"],
+  ["/kaart", "Tappunten", "map"],
+  ["/testresultaten", "Mijn tests", "tests"],
+] as const;
 
 export default function Home() {
   return (
@@ -13,11 +21,23 @@ export default function Home() {
           <h1>{startpagina.titel}</h1>
           <p>{startpagina.intro}</p>
           <div className="actions">
-            <Link className="button button-light" href="/mijn-water">Ontdek je water <span aria-hidden="true">↗</span></Link>
+            <Link className="button button-accent" href="/mijn-water">Ontdek je water <span aria-hidden="true">↗</span></Link>
             <Link className="hero-secondary" href="/testresultaten">Mijn tests <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
         <Image src={testkit} alt="Ontwerp van de blauwe From Tap to Trust-testkit" className="hero-photo" unoptimized preload />
+      </section>
+
+      <section className="app-shortcuts" aria-labelledby="shortcuts-title">
+        <h2 id="shortcuts-title">Snel naar</h2>
+        <div className="shortcut-grid">
+          {shortcuts.map(([href, label, icon]) => (
+            <Link key={href} className="shortcut" href={href}>
+              <span className="shortcut-icon"><AppIcon name={icon} /></span>
+              <span>{label}</span>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="section-space" aria-labelledby="platform-title">

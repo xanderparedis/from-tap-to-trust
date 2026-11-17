@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteNav } from "./_components/site-nav";
@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: { default: "From Tap to Trust", template: "%s | From Tap to Trust" },
   description: "Ontdek waar je kraanwater vandaan komt, vind een tappunt en verken de thuistest.",
 };
+
+export const viewport: Viewport = { themeColor: "#edf2fd", viewportFit: "cover" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
