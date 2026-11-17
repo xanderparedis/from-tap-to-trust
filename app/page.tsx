@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AppIcon } from "./_components/app-icon";
 import { NextLink } from "./_components/content";
 import { MascotSlot } from "./_components/mascot-slot";
+import { StartMotion } from "./_components/start-motion";
 import { start, nieuwsbrief } from "../inhoud.json";
 import testkit from "../public/brand/testkit.webp";
 
@@ -19,7 +20,7 @@ const featureIcons = { "/mijn-water": "water", "/kaart": "map", "/testresultaten
 
 export default function Home() {
   return (
-    <>
+    <StartMotion>
       <section className="start-hero" aria-labelledby="start-title">
         <div className="start-hero-copy">
           <p className="section-label">{start.label}</p>
@@ -37,7 +38,7 @@ export default function Home() {
         <h2 id="start-features-title">{start.functiesTitel}</h2>
         <div className="start-grid">
           {start.functies.map(({ titel, tekst, adres, actie }) => (
-            <Link className="start-tile" key={adres} href={adres}>
+            <Link className="start-tile" data-enter key={adres} href={adres}>
               <span className="tile-icon"><AppIcon name={featureIcons[adres as keyof typeof featureIcons] ?? "arrow"} /></span>
               <div>
                 <h3>{titel}</h3>
@@ -55,7 +56,7 @@ export default function Home() {
       </section>
 
       <section id="nieuwsbrief" className="newsletter" aria-labelledby="newsletter-title">
-        <header className="newsletter-header">
+        <header className="newsletter-header" data-enter>
           <div>
             <h2 id="newsletter-title">{nieuwsbrief.titel}</h2>
             <p>{nieuwsbrief.intro}</p>
@@ -65,7 +66,7 @@ export default function Home() {
 
         <div className="newsletter-feed">
           {entries.map(({ rubriek, titel, tekst, afbeelding, link }) => (
-            <article className={afbeelding ? "newsletter-entry has-image" : "newsletter-entry"} key={titel}>
+            <article data-enter className={afbeelding ? "newsletter-entry has-image" : "newsletter-entry"} key={titel}>
               <div className="newsletter-copy">
                 <p className="newsletter-category">{rubriek}</p>
                 <h3>{titel}</h3>
@@ -80,6 +81,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-    </>
+    </StartMotion>
   );
 }

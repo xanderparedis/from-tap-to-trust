@@ -13,9 +13,10 @@ const primary = [
   ["/testresultaten", "Mijn tests", "tests"],
 ] as const;
 
+const newsletterLink = ["/#nieuwsbrief", "Nieuwsbrief"] as const;
+
 const secondary = [
   ["/waterproblemen", "Waterproblemen"],
-  ["/#nieuwsbrief", "Nieuwsbrief"],
   ["/contact", "Contact"],
   ["/bronnen", "Bronnen"],
 ] as const;
@@ -39,7 +40,7 @@ export function SiteNav() {
     (openMenu === "desktop" ? desktopToggle : mobileToggle).current?.focus();
   }
 
-  const moreLinks = secondary.map(([href, label]) => (
+  const moreLinks = (links: readonly (readonly [string, string])[]) => links.map(([href, label]) => (
     <Link href={href} key={href} aria-current={pathname === href ? "page" : undefined}
       onClick={() => setOpenFor(null)}>
       {label}<AppIcon name="arrow" />
@@ -70,7 +71,15 @@ export function SiteNav() {
             aria-expanded={openMenu === "desktop"} data-active={moreActive || undefined}
             onClick={() => toggleMenu("desktop")}>Meer <span className="menu-chevron" aria-hidden="true" /></button>
           <div inert={openMenu !== "desktop"} className={openMenu === "desktop" ? "desktop-drawer is-open" : "desktop-drawer"}>
-            <div id="desktop-more-links" className="more-links">{moreLinks}</div>
+            <div id="desktop-more-links" className="more-links desktop-more-grid">
+              <div className="desktop-more-list">{moreLinks(secondary)}</div>
+              <Link className="menu-news" href="/#nieuwsbrief" aria-labelledby="menu-news-title"
+                onClick={() => setOpenFor(null)}>
+                <span className="menu-news-title" id="menu-news-title">Nieuwsbrief</span>
+                <span>Volg het burgeronderzoek en de ontwikkeling van de testkit.</span>
+                <AppIcon name="arrow" />
+              </Link>
+            </div>
           </div>
         </nav>
       </div>
@@ -96,7 +105,7 @@ export function SiteNav() {
           </button>
         </nav>
         <div inert={openMenu !== "mobile"} className={openMenu === "mobile" ? "nav-drawer is-open" : "nav-drawer"}>
-          <nav id="platform-nav" className="more-links" aria-label="Meer pagina’s">{moreLinks}</nav>
+          <nav id="platform-nav" className="more-links" aria-label="Meer pagina’s">{moreLinks([secondary[0], newsletterLink, ...secondary.slice(1)])}</nav>
         </div>
       </div>
     </header>
