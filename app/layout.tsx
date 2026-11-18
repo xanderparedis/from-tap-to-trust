@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteNav } from "./_components/site-nav";
+import { FooterWave } from "./_components/footer-wave";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteNav />
         <main id="inhoud" className="frame" tabIndex={-1}>{children}</main>
         <footer className="site-footer">
+          <FooterWave />
           <div className="frame footer-content">
             <Link href="/" className="footer-brand">
               <Image src="/brand/water-symbol.png" alt="" width={28} height={28} unoptimized />
