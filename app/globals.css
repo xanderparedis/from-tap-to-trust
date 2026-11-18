@@ -967,9 +967,25 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
     transform: scale(1.035, .93);
     transition-duration: .18s;
   }
+  .button::after {
+    content: "";
+    position: absolute;
+    inset: -1.6rem -.9rem;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    background-image:
+      radial-gradient(ellipse, var(--button-edge) 65%, transparent 72%),
+      radial-gradient(ellipse, var(--button-edge) 65%, transparent 72%),
+      radial-gradient(ellipse, var(--button-edge) 65%, transparent 72%);
+    background-size: .45rem .62rem, .32rem .43rem, .23rem .32rem;
+    background-repeat: no-repeat;
+  }
+  .button:not(:disabled):active::after { animation: liquid-splash 1s ease-out both; }
   .test-route-picker a { transition: border-color .2s ease, background-color .2s ease; }
 
   @media (hover: hover) and (pointer: fine) {
+    .button:not(:disabled):hover::after { animation: liquid-splash 1s ease-out both; }
     .button:not(:disabled):hover::before {
       border-radius: 2.5rem 1.85rem 2.3rem 1.8rem / 1.8rem 2.25rem 1.7rem 2.1rem;
       transform: scale(1.015, 1.035);
@@ -1250,4 +1266,10 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
 @keyframes footer-current {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+@keyframes liquid-splash {
+  0% { opacity: 0; background-position: 19% 40%, 78% 40%, 88% 60%; }
+  18% { opacity: .95; }
+  58% { opacity: .8; background-position: 9% 4%, 88% 0%, 99% 65%; }
+  100% { opacity: 0; background-position: 4% 24%, 94% 20%, 100% 95%; }
 }
