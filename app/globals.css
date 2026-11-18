@@ -462,6 +462,14 @@ p { max-width: 67ch; }
 .route-list { margin-top: 1rem; }
 .panel h3:not(:first-child) { margin-top: 1rem; }
 .accordion { display: grid; gap: .7rem; max-width: 54rem; }
+.faq-themes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; }
+.faq-theme { display: grid; align-content: start; gap: .65rem; background: var(--brand-soft-blue); }
+.faq-theme h2 { font-size: clamp(1.35rem, 3vw, 2.1rem); }
+.faq-theme > span:last-child { justify-self: end; }
+.faq-theme:hover { background: var(--surface); }
+.faq-section .accordion { max-width: none; }
+.faq-section details p { margin-top: .7rem; max-width: 75ch; }
+@media (max-width: 35rem) { .faq-themes { grid-template-columns: 1fr; } }
 summary {
   display: flex;
   align-items: center;

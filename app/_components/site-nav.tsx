@@ -16,6 +16,7 @@ const primary = [
 ] as const;
 
 const secondary = [
+  ["/veelgestelde-vragen", "Veelgestelde vragen"],
   ["/waterproblemen", "Waterproblemen"],
   ["/#nieuwsbrief", "Nieuwsbrief"],
   ["/contact", "Contact"],

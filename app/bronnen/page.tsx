@@ -61,6 +61,10 @@ export default function SourcesPage() {
         ))}
       </div>
       <section className="panel section-space">
+        <h2>Veelgestelde vragen</h2>
+        <p>De vragen en antwoorden zijn overgenomen uit het projectdocument <cite>Veel gestelde vragen</cite>, met vier thema’s: veiligheid en kwaliteit, smaak en geur, thuis en behandeling, en keuzes en misvattingen. Het kwaliteitscijfer van 99,56% heeft betrekking op analyses aan de kraan in Vlaanderen in 2024.</p>
+      </section>
+      <section className="panel section-space">
         <h2>Eigen onderzoek</h2>
         <p>De samenvatting van onze enquêtes en straatgesprekken is gebaseerd op het academisch projectrapport <cite>From Tap to Trust</cite>, versie 1.4, pp. 27–30.</p>
       </section>

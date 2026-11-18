@@ -27,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span>From Tap to Trust</span>
             </Link>
             <nav className="footer-links" aria-label="Links onderaan">
+              <Link href="/veelgestelde-vragen">Veelgestelde vragen</Link>
               <Link href="/bronnen">Bronnen</Link>
               <Link href="/contact">Iets mis? Neem contact op <span aria-hidden="true">↗</span></Link>
             </nav>
