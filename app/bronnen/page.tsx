@@ -11,6 +11,11 @@ const references = [
       ["AquaFlanders – Kwaliteit van mijn drinkwater", sources.waterQuality],
       ["AquaFlanders – Zoek je waterbedrijf", sources.waterCompany],
       ["AquaFlanders – Waterbedrijf voor Antwerpen", sources.antwerpWaterCompany],
+      ["AquaFlanders – Waterbedrijf voor Borsbeek", sources.borsbeek],
+      ["AquaFlanders – Waterbedrijf voor Mortsel", sources.mortsel],
+      ["AquaFlanders – Waterbedrijf voor Edegem", sources.edegem],
+      ["AquaFlanders – Waterbedrijf voor Schoten", sources.schoten],
+      ["AquaFlanders – Waterbedrijf voor Brasschaat", sources.brasschaat],
       ["Stroomgebiedbeheerplannen – Drinkwaterproductie in het Netebekken", sources.antwerpWater],
       ["Stroomgebiedbeheerplannen – De Maas als bron voor Antwerpen", sources.antwerpWaterOrigin],
       ["VMM – Drinkwaterkwaliteit per leveringsgebied", sources.distributionQuality],
@@ -45,14 +50,14 @@ export default function SourcesPage() {
       </Intro>
       <div className="card-grid section-space">
         {references.map(({ title, links }) => (
-          <section className="panel" key={title}>
-            <h2>{title}</h2>
+          <details className="panel" key={title}>
+            <summary>{title}</summary>
             <ul>
               {links.map(([label, href]) => (
                 <li key={href}><a className="text-link" href={href}>{label} <span aria-hidden="true">↗</span></a></li>
               ))}
             </ul>
-          </section>
+          </details>
         ))}
       </div>
       <section className="panel section-space">

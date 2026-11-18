@@ -86,10 +86,18 @@ export function SiteNav() {
     const element = header.current;
     if (!element) return;
 
+    const viewport = window.visualViewport;
     let previous = window.scrollY;
     let direction = 0;
     let distance = 0;
     let frame = 0;
+
+    function syncHeaderTheme() {
+      const scrollTop = document.scrollingElement?.scrollTop ?? window.scrollY;
+      const atTop = pathname === "/" && scrollTop <= 0 && (viewport?.pageTop ?? 0) <= 0;
+      const opening = atTop ? document.querySelector("[data-film-track]")?.getBoundingClientRect() : undefined;
+      element?.toggleAttribute("data-hero-top", Boolean(opening && opening.width > 0 && Math.abs(opening.top) < 1));
+    }
 
     function updateHeader() {
       frame = 0;
@@ -98,9 +106,8 @@ export function SiteNav() {
       const current = Math.max(0, Math.min(window.scrollY, limit));
       const delta = current - previous;
       previous = current;
-      element.toggleAttribute("data-past-top", current > 1);
 
-      if (current <= 64) {
+      if (current <= 140) {
         distance = 0;
         element.removeAttribute("data-scrolled-away");
         return;
@@ -110,24 +117,31 @@ export function SiteNav() {
       const nextDirection = Math.sign(delta);
       distance = Math.abs(delta) + (direction === nextDirection ? distance : 0);
       direction = nextDirection;
-      if (direction < 0 && distance >= 8) {
+      if (direction < 0 && distance >= 30) {
         element.removeAttribute("data-scrolled-away");
-      } else if (direction > 0 && distance >= 24 && !element.hasAttribute("data-scrolled-away")) {
+      } else if (direction > 0 && distance >= 100 && !element.hasAttribute("data-scrolled-away")) {
         element.setAttribute("data-scrolled-away", "");
         setOpenFor((currentMenu) => currentMenu?.pinned ? currentMenu : null);
       }
     }
 
     function queueUpdate() {
+      syncHeaderTheme();
       if (!frame) frame = window.requestAnimationFrame(updateHeader);
     }
 
-    updateHeader();
-    window.addEventListener("scroll", queueUpdate, { passive: true });
+    syncHeaderTheme();
+    window.addEventListener("scroll", queueUpdate, { passive: true, capture: true });
+    window.addEventListener("pageshow", queueUpdate);
+    window.addEventListener("resize", queueUpdate);
+    viewport?.addEventListener("scroll", syncHeaderTheme);
     return () => {
-      window.removeEventListener("scroll", queueUpdate);
+      window.removeEventListener("scroll", queueUpdate, true);
+      window.removeEventListener("pageshow", queueUpdate);
+      window.removeEventListener("resize", queueUpdate);
+      viewport?.removeEventListener("scroll", syncHeaderTheme);
       window.cancelAnimationFrame(frame);
-      element.removeAttribute("data-past-top");
+      element.removeAttribute("data-hero-top");
       element.removeAttribute("data-scrolled-away");
     };
   }, [pathname]);

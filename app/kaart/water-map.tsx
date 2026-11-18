@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import type { Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, Marker } from "leaflet";
 import fountains from "../_data/antwerp-fountains.json";
 import { antwerpNeighborhoods } from "../_data/antwerp-neighborhoods";
 
@@ -11,11 +11,14 @@ type Leaflet = typeof import("leaflet");
 
 const districts = [...new Set(fountains.map((point) => point.district))].sort((a, b) => a.localeCompare(b, "nl"));
 
-function FountainMap({ points }: { points: Fountain[] }) {
+function FountainMap({ points, selected, onSelect }: { points: Fountain[]; selected: Fountain | undefined; onSelect: (id: number) => void }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const [leaflet, setLeaflet] = useState<Leaflet>();
   const [failed, setFailed] = useState(false);
+  const markers = useRef(new Map<number, Marker>());
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => { onSelectRef.current = onSelect; }, [onSelect]);
 
   useEffect(() => {
     let active = true;
@@ -44,15 +47,46 @@ function FountainMap({ points }: { points: Fountain[] }) {
     const instance = map.current;
     if (!leaflet || !instance) return;
     const group = leaflet.featureGroup(points.map((point) => {
-      const label = document.createElement("span");
-      label.textContent = point.name + " · " + point.district;
-      return leaflet.circleMarker([point.lat, point.lng], {
-        radius: 7, color: "#edf2fd", weight: 2, fillColor: "#144bba", fillOpacity: 1,
-      }).bindPopup(label);
+      const popup = document.createElement("div");
+      popup.className = "fountain-popup";
+      const title = document.createElement("strong");
+      title.textContent = point.name;
+      const location = document.createElement("p");
+      location.textContent = point.postcode + " " + point.district;
+      const route = document.createElement("a");
+      route.href = "https://www.google.com/maps/dir/?api=1&destination=" + point.lat + "," + point.lng;
+      route.textContent = "Route naar dit tappunt ↗";
+      popup.append(title, location, route);
+      const marker = leaflet.marker([point.lat, point.lng], {
+        title: point.name,
+        alt: point.name,
+        icon: leaflet.divIcon({
+          className: "fountain-pin",
+          html: '<span class="fountain-pin-body" aria-hidden="true"></span>',
+          iconSize: [34, 40],
+          iconAnchor: [17, 38],
+          popupAnchor: [0, -35],
+        }),
+      }).bindPopup(popup);
+      marker.on("click", () => onSelectRef.current(point.id));
+      markers.current.set(point.id, marker);
+      return marker;
     })).addTo(instance);
-    if (points.length) instance.fitBounds(group.getBounds(), { padding: [24, 24], maxZoom: 15, animate: false });
-    return () => { group.remove(); };
+    const currentMarkers = markers.current;
+    if (points.length) instance.fitBounds(group.getBounds(), { padding: [38, 38], maxZoom: 15, animate: false });
+    return () => {
+      group.remove();
+      currentMarkers.clear();
+    };
   }, [leaflet, points]);
+
+  useEffect(() => {
+    const instance = map.current;
+    if (!selected || !instance || !leaflet) return;
+    const animate = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+    instance.setView([selected.lat, selected.lng], Math.max(instance.getZoom(), 15), { animate });
+    markers.current.get(selected.id)?.openPopup();
+  }, [selected, leaflet, points]);
 
   return failed
     ? <p className="panel" role="status">De kaart kon niet worden geladen. Je kunt de locaties hieronder bekijken.</p>
@@ -63,6 +97,7 @@ export function WaterMap() {
   const searchParams = useSearchParams();
   const [search, setSearch] = useState<string>();
   const [district, setDistrict] = useState("");
+  const [selectedId, setSelectedId] = useState<number>();
   const [category, setCategory] = useState<"public" | "horeca">("public");
   const query = search ?? searchParams.get("plaats") ?? "";
   const points = useMemo(() => {
@@ -75,10 +110,11 @@ export function WaterMap() {
         (point.name + " " + point.district + " " + point.postcode).toLowerCase().includes(term)),
     );
   }, [query, district]);
+  const selected = points.find((point) => point.id === selectedId);
   const matchedNeighborhood = antwerpNeighborhoods.get(query.trim().toLowerCase());
 
   return (
-    <section aria-label="Drinkwaterpunten zoeken">
+    <section className="map-workspace" aria-label="Drinkwaterpunten zoeken">
       <div className="switcher" role="group" aria-label="Type drinkwaterpunt">
         <button type="button" aria-pressed={category === "public"} onClick={() => setCategory("public")}>Openbare tappunten</button>
         <button type="button" aria-pressed={category === "horeca"} onClick={() => setCategory("horeca")}>Restaurants en bars</button>
@@ -110,13 +146,25 @@ export function WaterMap() {
           </p>
           {points.length > 0 ? (
             <>
-              <FountainMap points={points} />
+              <div className="map-frame">
+                <FountainMap points={points} selected={selected} onSelect={setSelectedId} />
+                <div className="map-key"><span aria-hidden="true" />Openbaar tappunt</div>
+              </div>
+              {selected && (
+                <div className="panel selected-fountain motion-reveal">
+                  <div><p className="accent-label">Jouw tappunt</p><h3>{selected.name}</h3><p>{selected.postcode} {selected.district}</p></div>
+                  <a className="button" href={"https://www.google.com/maps/dir/?api=1&destination=" + selected.lat + "," + selected.lng}>Open de route <span aria-hidden="true">↗</span></a>
+                </div>
+              )}
               <details className="panel point-list">
                 <summary>Bekijk de locaties als lijst</summary>
                 <ul>
                   {points.map((point) => (
                     <li key={point.id}>
-                      <strong>{point.name}</strong><span>{point.postcode} {point.district}</span>
+                      <button type="button" className="point-list-button" onClick={() => setSelectedId(point.id)}
+                        aria-pressed={point.id === selectedId}>
+                        <strong>{point.name}</strong><span>{point.postcode} {point.district}</span>
+                      </button>
                     </li>
                   ))}
                 </ul>

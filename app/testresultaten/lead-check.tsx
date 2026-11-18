@@ -101,13 +101,13 @@ export function LeadCheck() {
 
 function LeadScore({ result }: { result: LeadResult }) {
   return (
-    <div className="lead-score">
+    <div className="lead-score" data-alert={result.category === "strong" || result.category === "confirmed" || result.urgency === "high" || undefined}>
       <div className="lead-gauge" style={{ "--lead-score-angle": (result.score * 1.8) + "deg" } as CSSProperties}>
         <meter className="sr-only" min={0} max={100} value={result.score} aria-label="Indicatiescore" />
         <strong aria-hidden="true">{result.score}<small> / 100 punten</small></strong>
       </div>
       <p className="lead-score-label">{leadResultLabels[result.category]}</p>
-      <p className="lead-score-caption">De indicatiescore komt uit je antwoorden. Voor het loodgehalte is een professionele meting nodig.</p>
+      <p className="lead-score-caption">Indicatie uit je antwoorden. Het loodgehalte laat je professioneel meten.</p>
       <div className="lead-urgency">
         <span>Urgentie van opvolging</span>
         <strong>{result.urgencyLabel}</strong>
