@@ -83,8 +83,7 @@ function FountainMap({ points, selected, onSelect }: { points: Fountain[]; selec
   useEffect(() => {
     const instance = map.current;
     if (!selected || !instance || !leaflet) return;
-    const animate = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-    instance.setView([selected.lat, selected.lng], Math.max(instance.getZoom(), 15), { animate });
+    instance.setView([selected.lat, selected.lng], Math.max(instance.getZoom(), 15), { animate: false });
     markers.current.get(selected.id)?.openPopup();
   }, [selected, leaflet, points]);
 
