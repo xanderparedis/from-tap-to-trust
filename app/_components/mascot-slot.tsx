@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { mascottes } from "../../inhoud.json";
+import { WaterMascot } from "./water-mascot";
 
 type Mascot = { pad: string; alt: string };
 
@@ -12,6 +13,6 @@ export function MascotSlot({ slot }: { slot: keyof typeof mascottes }) {
     <Image className="mascot-slot mascot-image" src={mascot.pad} alt={mascot.alt}
       width={144} height={144} unoptimized />
   ) : (
-    <span className="mascot-slot mascot-placeholder" aria-hidden="true">Mascotte</span>
+    <WaterMascot />
   );
 }

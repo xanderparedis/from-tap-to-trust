@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./_components/water-mascot.css";
 
 @font-face {
   font-family: "Causten";
