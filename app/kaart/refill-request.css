@@ -1,0 +1,30 @@
+.refill-request {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(1.3rem, 4vw, 3rem);
+  border-radius: 1.4rem;
+  background: var(--brand-soft-blue);
+}
+.refill-request-copy { display: grid; align-content: start; gap: 1rem; }
+.refill-request-copy h2 {
+  max-width: 15ch;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  letter-spacing: -.045em;
+  line-height: 1.05;
+}
+.refill-request-copy p { max-width: 38ch; }
+.refill-request-content { align-self: center; min-width: 0; }
+.refill-request-form { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 1rem; }
+.refill-request-form[hidden] { display: none; }
+.refill-request-form .field { min-width: 0; }
+.refill-request-street, .refill-request-submit { grid-column: 1 / -1; }
+.refill-request-submit { justify-self: start; }
+.refill-request-note { margin-top: 1rem; font-size: .875rem; line-height: 1.4; }
+.refill-request-success { font: 700 clamp(1.4rem, 2.5vw, 2rem)/1.15 var(--brand-heading); }
+.refill-request-confirmation p + p { margin-top: .8rem; }
+.refill-request-confirmation button { margin-top: 1.2rem; cursor: pointer; text-align: left; }
+@media (max-width: 43rem) {
+  .refill-request { grid-template-columns: 1fr; }
+  .refill-request-form { grid-template-columns: 1fr; }
+}

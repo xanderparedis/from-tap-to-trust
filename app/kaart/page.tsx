@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Intro } from "../_components/content";
 import { WaterMap } from "./water-map";
+import { RefillRequest } from "./refill-request";
 import "leaflet/dist/leaflet.css";
+import "./refill-request.css";
 
 export const metadata: Metadata = { title: "Trusted by us" };
 
@@ -15,6 +17,7 @@ export default function MapPage() {
       <Suspense fallback={<p className="panel" role="status">{"Loading map…"}</p>}>
         <WaterMap />
       </Suspense>
+      <RefillRequest />
     </>
   );
 }
