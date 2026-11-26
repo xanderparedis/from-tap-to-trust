@@ -261,6 +261,7 @@ p { max-width: 67ch; }
   align-items: center;
   gap: clamp(.9rem, 3vw, 2.5rem);
   padding: clamp(1.25rem, 4vw, 3.6rem);
+  padding-inline: clamp(.75rem, 2.5vw, 2rem);
   border-radius: 0;
   background: transparent;
   color: var(--brand-paper);
@@ -1093,7 +1094,7 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
     }
 
     .start-hero-copy { position: relative; z-index: 1; }
-    .start-scene .start-hero-art { position: static; aspect-ratio: 16 / 9; }
+    .start-scene .start-hero-art { position: static; aspect-ratio: 3 / 2; }
 
     .start-scene .start-film {
       position: absolute;
