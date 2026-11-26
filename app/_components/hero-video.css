@@ -1,24 +1,2 @@
 .hero-video { position: relative; width: 100%; height: 100%; aspect-ratio: 16 / 9; background: #103685; }
 .hero-video video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
-.hero-video::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #031b4be0, #031b4b70 55%, #031b4b20);
-  opacity: calc(1 - var(--film-progress, 1));
-  pointer-events: none;
-}
-.hero-video-control {
-  position: absolute;
-  z-index: 2;
-  left: 1rem;
-  bottom: calc(1rem + (1 - var(--film-progress, 1)) * var(--dock-space, 0px));
-  min-height: 2.75rem;
-  padding: .55rem .9rem;
-  border: 1px solid #ffffff80;
-  border-radius: 2rem;
-  background: #06245ccc;
-  color: #fff;
-  cursor: pointer;
-}
-.hero-video-control:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
