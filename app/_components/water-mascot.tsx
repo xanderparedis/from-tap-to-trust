@@ -9,7 +9,7 @@ export function WaterMascot() {
       return mountWaterMascot(root.current);
   }, []);
   return (<div ref={root} className="mascot-slot animated-mascot" data-mascot-state="awake">
- <svg className="mascot-stage" viewBox="-90 -90 880 790" role="button" tabIndex={0} aria-labelledby={`${id}-title ${id}-description`}>
+ <svg className="mascot-stage" viewBox="-90 -90 880 790" shapeRendering="geometricPrecision" role="button" tabIndex={0} aria-labelledby={`${id}-title ${id}-description`}>
   <title id={`${id}-title`}>De watermascotte van From Tap to Trust</title>
   <desc id={`${id}-description`}>Een zachte blauwe vorm met ogen die je muis volgen en bubbeltjes die samenvloeien. Aai hem, klik of tik op hem voor een sprongetje. Na rust dommelt hij in; beweeg in zijn buurt om hem wakker te maken. Met Enter of spatie springt hij.</desc>
   <defs>
@@ -19,20 +19,23 @@ export function WaterMascot() {
     <feComposite in="SourceGraphic" in2="joined-water" operator="atop"/>
    </filter>
   </defs>
-  <g className="liquid" filter={`url(#${id}-fusion)`}>
-  <g className="water-necks" fill="#2853a1" aria-hidden="true">
+  <g className="liquid-fusion" filter={`url(#${id}-fusion)`} pointerEvents="none" aria-hidden="true">
+   <use href={`#${id}-liquid-shapes`} />
+  </g>
+  <g id={`${id}-liquid-shapes`} className="liquid">
+  <g className="water-necks" fill="#144bba" aria-hidden="true">
    <path /><path /><path /><path /><path /><path /><path /><path /><path /><path />
   </g>
-  <g className="satellites" fill="#2853a1">
+  <g className="satellites" fill="#144bba">
    <path /><path /><path />
    <path /><path /><path />
    <path /><path /><path />
   </g>
-  <g className="escaping-drops" fill="#2853a1" aria-hidden="true">
+  <g className="escaping-drops" fill="#144bba" aria-hidden="true">
    <path opacity="0"/>
   </g>
   <g className="body-motion">
-   <path className="body" fill="#2853a1" d="M390 55 C450 55 503 102 503 160 C503 220 435 245 435 303 C435 360 502 391 502 449 C502 506 459 538 405 538 C343 538 329 484 268 477 C216 470 180 475 137 448 C84 414 65 358 68 300 C70 240 97 198 146 172 C189 150 243 149 295 104 C325 77 353 53 390 55 Z"/>
+   <path className="body" fill="#144bba" d="M390 55 C450 55 503 102 503 160 C503 220 435 245 435 303 C435 360 502 391 502 449 C502 506 459 538 405 538 C343 538 329 484 268 477 C216 470 180 475 137 448 C84 414 65 358 68 300 C70 240 97 198 146 172 C189 150 243 149 295 104 C325 77 353 53 390 55 Z"/>
   </g>
   </g>
   <g className="character">

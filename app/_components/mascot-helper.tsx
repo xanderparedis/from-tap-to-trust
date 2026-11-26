@@ -20,6 +20,18 @@ export function MascotHelper() {
   const root = useRef<HTMLElement>(null);
   const exitTimer = useRef<number | null>(null);
 
+  useEffect(() => {
+    const button = launcher.current;
+    if (!button) return;
+    function alignWithButton() {
+      if (button) root.current?.style.setProperty("--helper-launcher-width", `${button.getBoundingClientRect().width}px`);
+    }
+    const size = new ResizeObserver(alignWithButton);
+    size.observe(button);
+    alignWithButton();
+    return () => size.disconnect();
+  }, []);
+
   const close = useCallback((restoreFocus = true) => {
     if (exitTimer.current !== null) window.clearTimeout(exitTimer.current);
     if (restoreFocus) launcher.current?.focus({ preventScroll: true });
