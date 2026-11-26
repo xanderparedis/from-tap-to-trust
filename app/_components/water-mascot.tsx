@@ -10,8 +10,8 @@ export function WaterMascot() {
   }, []);
   return (<div ref={root} className="mascot-slot animated-mascot" data-mascot-state="awake">
  <svg className="mascot-stage" viewBox="-90 -90 880 790" shapeRendering="geometricPrecision" role="button" tabIndex={0} aria-labelledby={`${id}-title ${id}-description`}>
-  <title id={`${id}-title`}>De watermascotte van From Tap to Trust</title>
-  <desc id={`${id}-description`}>Een zachte blauwe vorm met ogen die je muis volgen en bubbeltjes die samenvloeien. Aai hem, klik of tik op hem voor een sprongetje. Na rust dommelt hij in; beweeg in zijn buurt om hem wakker te maken. Met Enter of spatie springt hij.</desc>
+  <title id={`${id}-title`}>{"The From Tap to Trust water mascot"}</title>
+  <desc id={`${id}-description`}>{"A soft blue shape with eyes that follow your mouse and bubbles that merge. Pet, click or tap it to make it jump. It dozes off after a rest; move nearby to wake it. Press Enter or Space to make it jump."}</desc>
   <defs>
    <filter id={`${id}-fusion`} filterUnits="userSpaceOnUse" x="-90" y="-90" width="880" height="790" colorInterpolationFilters="sRGB">
     <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="soft-water"/>

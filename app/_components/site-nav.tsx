@@ -8,44 +8,44 @@ import { AppIcon } from "./app-icon";
 import { MediaPlaceholder } from "./media-placeholder";
 
 const primary = [
-  ["/", "Start", "home"],
-  ["/testresultaten", "Mijn tests", "tests"],
-  ["/ontdek", "Ontdek", "discover"],
-  ["/kaart", "Kaart", "map"],
-  ["/webshop", "Webshop", "shop"],
+  ["/", "Home", "home"],
+  ["/testresultaten", "My tests", "tests"],
+  ["/ontdek", "Discover", "discover"],
+  ["/kaart", "Map", "map"],
+  ["/webshop", "Shop", "shop"],
 ] as const;
 
 const secondary = [
-  ["/veelgestelde-vragen", "Veelgestelde vragen"],
-  ["/waterproblemen", "Waterproblemen"],
-  ["/#nieuwsbrief", "Nieuwsbrief"],
+  ["/veelgestelde-vragen", "Frequently asked questions"],
+  ["/waterproblemen", "Water issues"],
+  ["/#nieuwsbrief", "Newsletter"],
   ["/contact", "Contact"],
-  ["/bronnen", "Bronnen"],
+  ["/bronnen", "Sources"],
 ] as const;
 
 const panels = [
   {
-    label: "Ontdek", href: "/ontdek",
-    title: "Leer je kraanwater kennen", description: "Ontdek de herkomst, verken de feiten en vind een antwoord op je vragen.",
-    image: "Waterwinning aan het Albertkanaal",
-    links: [["/ontdek", "Alles ontdekken"], ["/mijn-water", "Waar komt mijn kraanwater vandaan?"], ["/veelgestelde-vragen#keuzes", "Feiten & misvattingen"], ["/veelgestelde-vragen", "Veelgestelde vragen"]],
+    label: "Discover", href: "/ontdek",
+    title: "Get to know your tap water", description: "Discover the source, explore the facts and find answers to your questions.",
+    image: "Water intake at the Albert Canal",
+    links: [["/ontdek", "Explore everything"], ["/mijn-water", "Where does my tap water come from?"], ["/veelgestelde-vragen#keuzes", "Facts & misconceptions"], ["/veelgestelde-vragen", "Frequently asked questions"]],
   },
   {
     label: "Trusted by us", href: "/kaart",
-    title: "Kraanwater onderweg", description: "Bekijk waar je in Antwerpen je fles kunt bijvullen.",
-    image: "Openbaar tappunt in Antwerpen",
-    links: [["/kaart", "Open de tappuntenkaart"]],
+    title: "Tap water on the go", description: "See where you can refill your bottle in Antwerp.",
+    image: "Public refill point in Antwerp",
+    links: [["/kaart", "Open the refill map"]],
   },
   {
-    label: "Mijn tests", href: "/testresultaten",
-    title: "Onderzoek je kraanwater", description: "Probeer de chloordemo of bekijk welke vervolgstap past bij je loodzelfcheck.",
-    image: "Testkit met cuvet en kleurkaart",
-    links: [["/testresultaten", "Alle tests"], ["/testresultaten#chloor", "Chloorproef"], ["/testresultaten#lood", "Loodzelfcheck"]],
+    label: "My tests", href: "/testresultaten",
+    title: "Test your tap water", description: "Try the chlorine demo or explore the next steps from your lead self-check.",
+    image: "Test kit with cuvette and colour chart",
+    links: [["/testresultaten", "All tests"], ["/testresultaten#chloor", "Chlorine test"], ["/testresultaten#lood", "Lead self-check"]],
   },
   {
-    label: "Meer", href: null,
-    title: "Volg het burgeronderzoek", description: "Lees projectnieuws, neem contact op of bekijk onze bronnen.",
-    image: "Deelnemers aan het burgeronderzoek",
+    label: "More", href: null,
+    title: "Follow the citizen science project", description: "Read project news, get in touch or explore our sources.",
+    image: "Citizen science participants",
     links: secondary,
   },
 ] as const;
@@ -181,7 +181,7 @@ export function SiteNav() {
               From <strong>tap</strong> to <strong>trust</strong><span className="brand-period" aria-hidden="true" />
             </span>
           </Link>
-          <nav className="site-nav" aria-label="Hoofdnavigatie"
+          <nav className="site-nav" aria-label={"Main navigation"}
             onPointerLeave={(event) => {
               if (event.pointerType === "mouse" && !open?.pinned &&
                 !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
@@ -195,13 +195,13 @@ export function SiteNav() {
                   if (event.pointerType === "mouse" && !open?.pinned &&
                     !desktopPanel.current?.contains(document.activeElement)) setOpenFor(null);
                 }}
-                onClick={() => setOpenFor(null)}>Start</Link>
+                onClick={() => setOpenFor(null)}>{"Home"}</Link>
               {panels.slice(0, 2).map(desktopTrigger)}
             </div>
             <div className="site-nav-group">
               {panels.slice(2, 3).map(desktopTrigger)}
               <Link href="/webshop" aria-current={pathname === "/webshop" ? "page" : undefined}
-                onClick={() => setOpenFor(null)}>Webshop</Link>
+                onClick={() => setOpenFor(null)}>{"Shop"}</Link>
               {panels.slice(3).map(desktopTrigger)}
             </div>
             <div id="desktop-navigation-panel" ref={desktopPanel} inert={!panel}
@@ -224,14 +224,14 @@ export function SiteNav() {
 
       {open?.pinned && panel && (
         <button className="menu-backdrop menu-backdrop-desktop" type="button"
-          aria-label="Sluit het menu" tabIndex={-1} onClick={() => {
+          aria-label={"Close menu"} tabIndex={-1} onClick={() => {
             setOpenFor(null);
             const toggle = desktopToggles.current[panel.label];
             toggle?.focus();
           }} />
       )}
       <div className="app-dock">
-        <nav className="dock-tabs" aria-label="App-navigatie">
+        <nav className="dock-tabs" aria-label={"App navigation"}>
           {primary.map(([href, label, icon]) => (
             <Link className="dock-item" key={href} href={href}
               aria-current={pathname === href ? "page" : undefined} data-active={isActive(href) || undefined}

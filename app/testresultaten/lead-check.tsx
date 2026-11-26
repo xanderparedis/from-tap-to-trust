@@ -31,7 +31,7 @@ export function LeadCheck() {
 
   return (
     <div className="panel lead-check">
-      <ol className="lead-progress" aria-label="Voortgang loodzelfcheck">
+      <ol className="lead-progress" aria-label={"Lead self-check progress"}>
         {leadQuestions.map(({ id, label }, index) => (
           <li key={id} aria-current={step === index ? "step" : undefined} data-complete={index < step}>
             <span aria-hidden="true" />
@@ -42,7 +42,7 @@ export function LeadCheck() {
 
       {question ? (
         <div key={question.id} className="motion-reveal">
-          <p className="lead-step-label">Vraag {step + 1} van {leadQuestions.length} · {question.label}</p>
+          <p className="lead-step-label">{"Question "}{step + 1}{" of "}{leadQuestions.length} · {question.label}</p>
           <h3 id="lead-question" ref={screenHeading} tabIndex={-1}>{question.title}</h3>
           {"hint" in question && <p id="lead-question-hint">{question.hint}</p>}
           <form className="lead-form" onSubmit={(event) => {
@@ -59,9 +59,9 @@ export function LeadCheck() {
               ))}
             </fieldset>
             <div className="lead-actions">
-              {step > 0 && <button type="button" className="button lead-secondary" onClick={() => goToStep(step - 1)}>Vorige</button>}
+              {step > 0 && <button type="button" className="button lead-secondary" onClick={() => goToStep(step - 1)}>{"Previous"}</button>}
               <button className="button" type="submit" disabled={!answers[question.id]}>
-                {step === leadQuestions.length - 1 ? "Bekijk mijn resultaat" : "Volgende"}
+                {step === leadQuestions.length - 1 ? "View my result" : "Next"}
               </button>
             </div>
           </form>
@@ -72,7 +72,7 @@ export function LeadCheck() {
             <LeadFollowUp answers={answers} result={result} headingRef={screenHeading} />
           ) : (
             <>
-              <h3 ref={screenHeading} tabIndex={-1}>Jouw resultaat</h3>
+              <h3 ref={screenHeading} tabIndex={-1}>{"Your result"}</h3>
               <LeadScore result={result} />
               <LeadAdvice result={result} onEdit={() => goToStep(0)} onFollowUp={() => {
                 shouldFocus.current = true;
@@ -82,14 +82,14 @@ export function LeadCheck() {
           )}
           <div className="lead-actions lead-review">
             {followUp ? (
-              <button type="button" className="button lead-secondary" onClick={() => goToStep(leadQuestions.length)}>Terug naar resultaat</button>
+              <button type="button" className="button lead-secondary" onClick={() => goToStep(leadQuestions.length)}>{"Back to result"}</button>
             ) : (
               <>
-                {result.category !== "possible" && <button type="button" className="button lead-secondary" onClick={() => goToStep(0)}>Antwoorden aanpassen</button>}
+                {result.category !== "possible" && <button type="button" className="button lead-secondary" onClick={() => goToStep(0)}>{"Edit answers"}</button>}
                 <button type="button" className="text-link lead-link-button" onClick={() => {
                   setAnswers({});
                   goToStep(0);
-                }}>Opnieuw beginnen</button>
+                }}>{"Start again"}</button>
               </>
             )}
           </div>
@@ -103,13 +103,13 @@ function LeadScore({ result }: { result: LeadResult }) {
   return (
     <div className="lead-score" data-alert={result.category === "strong" || result.category === "confirmed" || result.urgency === "high" || undefined}>
       <div className="lead-gauge" style={{ "--lead-score-angle": (result.score * 1.8) + "deg" } as CSSProperties}>
-        <meter className="sr-only" min={0} max={100} value={result.score} aria-label="Indicatiescore" />
-        <strong aria-hidden="true">{result.score}<small> / 100 punten</small></strong>
+        <meter className="sr-only" min={0} max={100} value={result.score} aria-label={"Indication score"} />
+        <strong aria-hidden="true">{result.score}<small>{" / 100 points"}</small></strong>
       </div>
       <p className="lead-score-label">{leadResultLabels[result.category]}</p>
-      <p className="lead-score-caption">Indicatie uit je antwoorden. Het loodgehalte laat je professioneel meten.</p>
+      <p className="lead-score-caption">{"An indication based on your answers. Have the lead concentration measured professionally."}</p>
       <div className="lead-urgency">
-        <span>Urgentie van opvolging</span>
+        <span>{"Follow-up urgency"}</span>
         <strong>{result.urgencyLabel}</strong>
         <div className="lead-urgency-steps" aria-hidden="true">
           {[1, 2, 3, 4].map((level) => <span key={level} data-filled={level <= urgencyLevels[result.urgency]} />)}
@@ -128,42 +128,42 @@ function LeadAdvice({ result, onEdit, onFollowUp }: {
     <div className="lead-advice">
       {result.category === "few" && (
         <>
-          <h4>Er zijn weinig aanwijzingen voor loden leidingen</h4>
-          <p>{result.hasUnknowns ? "Op basis van de gegevens die je kent, komen weinig aanwijzingen naar voren. Ontbrekende informatie maakt de inschatting minder volledig."
-            : "Je antwoorden geven weinig aanwijzingen voor loden drinkwaterleidingen in je woning."}</p>
-          <p>De zelfcheck geeft een eerste inschatting. Bij concrete twijfel over je leidingen kun je je waterbedrijf of een vakpersoon om advies vragen.</p>
+          <h4>{"There are few indications of lead pipes"}</h4>
+          <p>{result.hasUnknowns ? "The information you know suggests few indications. Missing information makes the assessment less complete."
+            : "Your answers give few indications of lead drinking water pipes in your home."}</p>
+          <p>{"The self-check provides an initial assessment. If you have specific concerns about your pipes, ask your water company or a qualified professional for advice."}</p>
         </>
       )}
       {result.category === "possible" && (
         <>
-          <h4>Er is nog onzekerheid over je drinkwaterleidingen</h4>
-          <p>Controleer het bouwjaar, ga na wanneer de drinkwaterleidingen zijn vervangen en vraag zo nodig informatie aan de eigenaar of verhuurder.</p>
-          <button type="button" className="button lead-secondary" onClick={onEdit}>Mijn informatie aanvullen</button>
+          <h4>{"There is still uncertainty about your drinking water pipes"}</h4>
+          <p>{"Check the year your home was built, find out when the drinking water pipes were replaced and, if necessary, ask the owner or landlord for information."}</p>
+          <button type="button" className="button lead-secondary" onClick={onEdit}>{"Add more information"}</button>
           {result.extraCheck && (
             <div className="lead-notice">
-              <h4>Extra controle aanbevolen</h4>
-              <p>Omdat er iemand in je huishouden extra kwetsbaar is voor lood, is het zinvol om ook een professionele loodtest te laten uitvoeren.</p>
-              <button type="button" className="button" onClick={onFollowUp}>Bekijk hoe je een loodtest aanvraagt</button>
+              <h4>{"Further checks recommended"}</h4>
+              <p>{"Because someone in your household is particularly vulnerable to lead, it is also worth arranging a professional lead test."}</p>
+              <button type="button" className="button" onClick={onFollowUp}>{"See how to request a lead test"}</button>
             </div>
           )}
         </>
       )}
       {result.category === "strong" && (
         <>
-          <h4>Laat je kraanwater professioneel testen</h4>
-          <p>Je antwoorden wijzen op mogelijke loden drinkwaterleidingen. Met een professionele loodtest kun je het loodgehalte laten meten.</p>
+          <h4>{"Have your tap water tested professionally"}</h4>
+          <p>{"Your answers suggest that lead drinking water pipes may be present. A professional lead test can measure the lead concentration."}</p>
           <details className="test-details">
-            <summary>Wat kun je intussen doen?</summary>
-            <p>Vraag je waterbedrijf welk voorzorgsadvies voor jouw situatie geldt. Als je kraanwater kunt blijven gebruiken, neem dan koud water voor drinken en koken en laat water dat lang heeft stilgestaan eerst doorstromen. Een professionele meting geeft uitsluitsel over het loodgehalte van het geteste staal.</p>
+            <summary>{"What can you do in the meantime?"}</summary>
+            <p>{"Ask your water company which precautions apply to your situation. If you can continue using your tap water, use cold water for drinking and cooking, and let water that has been standing for a long time run first. A professional measurement establishes the lead concentration in the sample tested."}</p>
           </details>
-          <button type="button" className="button" onClick={onFollowUp}>Bekijk hoe je een loodtest aanvraagt</button>
+          <button type="button" className="button" onClick={onFollowUp}>{"See how to request a lead test"}</button>
         </>
       )}
       {result.category === "confirmed" && (
         <>
-          <h4>Laat de loden drinkwaterleidingen zo snel mogelijk vervangen</h4>
-          <p>Je gaf aan dat er eerder loden drinkwaterleidingen zijn vastgesteld en dat die nog niet volledig zijn vervangen.</p>
-          <button type="button" className="button" onClick={onFollowUp}>Bekijk mijn persoonlijke vervolgstappen</button>
+          <h4>{"Have the lead drinking water pipes replaced as soon as possible"}</h4>
+          <p>{"You indicated that lead drinking water pipes were identified previously and have not yet been fully replaced."}</p>
+          <button type="button" className="button" onClick={onFollowUp}>{"View my personal next steps"}</button>
         </>
       )}
     </div>
@@ -178,14 +178,14 @@ function LeadFollowUp({ answers, result, headingRef }: {
   const tenant = answers.housing === "tenant";
   return (
     <>
-      <h3 ref={headingRef} tabIndex={-1}>{tenant ? "Contacteer je verhuurder" : "Bereid je professionele loodtest voor"}</h3>
+      <h3 ref={headingRef} tabIndex={-1}>{tenant ? "Contact your landlord" : "Prepare for your professional lead test"}</h3>
       {result.category === "confirmed" && (
         <ol className="test-steps lead-replacement-steps">
-          <li>{tenant ? "Vraag je verhuurder om de loden leidingen door een installateur te laten vervangen. In Vlaamse huurwoningen zijn loden drinkwaterleidingen niet toegestaan."
-            : "Schakel een installateur in om de loden leidingen na de watermeter te vervangen."}</li>
-          <li>Vraag je waterbedrijf de aansluiting te onderzoeken als er daar ook een vermoeden van lood is.</li>
-          <li>Bespreek met je waterbedrijf of een professionele wateranalyse aangewezen is en hoe je na de werken opvolgt.</li>
-          {!tenant && <li>Vraag bij je gemeente na of er financiële steun is voor de vervanging.</li>}
+          <li>{tenant ? "Ask your landlord to have a plumber replace the lead pipes. Lead drinking water pipes are not permitted in rented homes in Flanders."
+            : "Arrange for a plumber to replace the lead pipes after the water meter."}</li>
+          <li>{"Ask your water company to inspect the connection if lead is also suspected there."}</li>
+          <li>{"Discuss with your water company whether a professional water analysis is appropriate and how to follow up after the work."}</li>
+          {!tenant && <li>{"Ask your municipality whether financial support is available for replacement."}</li>}
         </ol>
       )}
       {tenant ? <TenantDraft answers={answers} result={result} /> : <OwnerDraft answers={answers} result={result} />}
@@ -200,40 +200,40 @@ function TenantDraft({ answers, result }: { answers: LeadAnswers; result: LeadRe
   const [landlord, setLandlord] = useState("");
   const [address, setAddress] = useState("");
   const [reason, setReason] = useState(
-    result.category === "confirmed" ? "Eerder vastgestelde loden drinkwaterleidingen"
-      : answers.year === "before1970" ? "Oudere woning"
-      : "Onvolledige informatie over de drinkwaterleidingen",
+    result.category === "confirmed" ? "Previously identified lead drinking water pipes"
+      : answers.year === "before1970" ? "Older home"
+      : "Incomplete information about the drinking water pipes",
   );
   const confirmed = result.category === "confirmed";
   const message = [
-    landlord.trim() ? "Beste " + landlord.trim() + "," : "Beste verhuurder,",
-    "Ik heb via From Tap to Trust de loodzelfcheck voor mijn huurwoning (" + (address.trim() || "[adres van de huurwoning]") + ") ingevuld.",
-    "Dit kwam uit de zelfcheck naar voren: " + reason + ".",
+    landlord.trim() ? "Dear " + landlord.trim() + "," : "Dear landlord,",
+    "I completed the From Tap to Trust lead self-check for my rented home (" + (address.trim() || "[address of the rented home]") + ").",
+    "The self-check highlighted the following: " + reason + ".",
     confirmed
-      ? "Volgens de informatie die ik heb, zijn er loden drinkwaterleidingen vastgesteld en zijn ze nog niet volledig vervangen. Kunt u een installateur inschakelen voor de vervanging en laten weten welke opvolging u voorziet?"
-      : "Kunt u nagaan uit welk materiaal de drinkwaterleidingen gemaakt zijn en wanneer ze eventueel zijn vervangen? Wilt u de zelfcheck aanvullen met uw gegevens en, als verdere controle aangewezen is, een professionele loodtest regelen?",
-    "Zelfcheck: " + leadCheckLink,
-    "Alvast bedankt voor uw hulp.",
-    "Met vriendelijke groeten,\n" + (name.trim() || "[jouw naam]"),
+      ? "According to the information I have, lead drinking water pipes have been identified and have not yet been fully replaced. Could you arrange for a plumber to replace them and let me know what follow-up you plan?"
+      : "Could you check what material the drinking water pipes are made from and whether and when they were replaced? Please complete the self-check with your information and arrange a professional lead test if further checks are recommended.",
+    "Self-check: " + leadCheckLink,
+    "Thank you for your help.",
+    "Kind regards,\n" + (name.trim() || "[your name]"),
   ].join("\n\n");
 
   return (
     <>
-      <p>Vul de gegevens aan om een bericht te maken dat je zelf naar je verhuurder kunt sturen.</p>
+      <p>{"Fill in the details to draft a message that you can send to your landlord yourself."}</p>
       <div className="lead-draft-fields">
-        <label className="field"><span>Jouw naam</span><input autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} /></label>
-        <label className="field"><span>Naam van je verhuurder</span><input value={landlord} onChange={(event) => setLandlord(event.target.value)} /></label>
-        <label className="field"><span>Adres van de huurwoning</span><input autoComplete="street-address" value={address} onChange={(event) => setAddress(event.target.value)} /></label>
-        <label className="field"><span>Welke aanwijzing kwam uit de zelfcheck?</span>
+        <label className="field"><span>{"Your name"}</span><input autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} /></label>
+        <label className="field"><span>{"Your landlord's name"}</span><input value={landlord} onChange={(event) => setLandlord(event.target.value)} /></label>
+        <label className="field"><span>{"Address of the rented home"}</span><input autoComplete="street-address" value={address} onChange={(event) => setAddress(event.target.value)} /></label>
+        <label className="field"><span>{"What did the self-check indicate?"}</span>
           <select value={reason} onChange={(event) => setReason(event.target.value)}>
-            <option>Oudere woning</option>
-            <option>Drinkwaterleidingen gedeeltelijk vervangen</option>
-            <option>Onvolledige informatie over de drinkwaterleidingen</option>
-            <option>Eerder vastgestelde loden drinkwaterleidingen</option>
+            <option>{"Older home"}</option>
+            <option>{"Drinking water pipes partially replaced"}</option>
+            <option>{"Incomplete information about the drinking water pipes"}</option>
+            <option>{"Previously identified lead drinking water pipes"}</option>
           </select>
         </label>
       </div>
-      <CopyDraft title="Voorbeeldbericht" text={message} button="Kopieer bericht" />
+      <CopyDraft title={"Sample message"} text={message} button={"Copy message"} />
     </>
   );
 }
@@ -255,38 +255,38 @@ function OwnerDraft({ answers, result }: { answers: LeadAnswers; result: LeadRes
       return question.label + ": " + answer?.[1];
     });
     const lines = [
-      "Beste,",
-      "Ik wil graag bespreken hoe ik een professionele loodtest voor mijn kraanwater kan regelen.",
-      "Naam: " + String(data.get("name")).trim(),
-      "Adres: " + String(data.get("address")).trim(),
-      "Gewenste datum: " + day + "/" + month + "/" + year,
-      "Zelfcheck From Tap to Trust: " + result.score + "/100 punten (" + leadResultLabels[result.category] + ")",
-      "Urgentie van opvolging: " + result.urgencyLabel,
+      "Dear Sir or Madam,",
+      "I would like to discuss how to arrange a professional lead test for my tap water.",
+      "Name: " + String(data.get("name")).trim(),
+      "Address: " + String(data.get("address")).trim(),
+      "Preferred date: " + day + "/" + month + "/" + year,
+      "From Tap to Trust self-check: " + result.score + "/100 points (" + leadResultLabels[result.category] + ")",
+      "Follow-up urgency: " + result.urgencyLabel,
       ...(data.has("share-answers") ? summary : []),
-      "Kunt u laten weten hoe we de staalname kunnen regelen?",
+      "Could you let me know how we can arrange sampling?",
     ];
     setDraft(lines.join("\n"));
   }
 
   return (
     <>
-      <p>De indicatiescore en urgentie staan al in je concept. Kies een voorkeursdatum en bezorg de aanvraag zelf aan je waterbedrijf. Je waterbedrijf bevestigt de afspraak en bespreekt de uitslag met je.</p>
+      <p>{"Your indication score and urgency are already included in your draft. Choose a preferred date and send the request to your water company yourself. Your water company will confirm the appointment and discuss the result with you."}</p>
       <dl className="lead-draft-meta">
-        <div><dt>Indicatiescore</dt><dd>{result.score} / 100 punten</dd></div>
-        <div><dt>Urgentie</dt><dd>{result.urgencyLabel}</dd></div>
+        <div><dt>{"Indication score"}</dt><dd>{result.score}{" / 100 points"}</dd></div>
+        <div><dt>{"Urgency"}</dt><dd>{result.urgencyLabel}</dd></div>
       </dl>
       <form className="lead-draft-fields" onSubmit={prepareRequest} onChange={() => setDraft("")}>
-        <label className="field"><span>Jouw naam</span><input name="name" autoComplete="name" required pattern=".*\S.*" /></label>
-        <label className="field"><span>Adres van de woning</span><input name="address" autoComplete="street-address" required pattern=".*\S.*" /></label>
-        <label className="field"><span>Gewenste afspraakdatum</span><input name="preferred-date" type="date" min={new Date().toLocaleDateString("sv-SE")} required /></label>
+        <label className="field"><span>{"Your name"}</span><input name="name" autoComplete="name" required pattern=".*\S.*" /></label>
+        <label className="field"><span>{"Home address"}</span><input name="address" autoComplete="street-address" required pattern=".*\S.*" /></label>
+        <label className="field"><span>{"Preferred appointment date"}</span><input name="preferred-date" type="date" min={new Date().toLocaleDateString("sv-SE")} required /></label>
         <label className="lead-option">
           <input type="checkbox" name="share-answers" />
-          <span>Voeg mijn antwoorden over het bouwjaar, de vervanging en eerdere controles toe.</span>
+          <span>{"Include my answers about the year of construction, pipe replacement and previous inspections."}</span>
         </label>
-        <button type="submit" className="button">Maak mijn aanvraag klaar</button>
+        <button type="submit" className="button">{"Prepare my request"}</button>
       </form>
-      {draft && <div className="motion-reveal"><CopyDraft title="Conceptaanvraag" text={draft} button="Kopieer aanvraag" headingRef={draftHeading} /></div>}
-      <Link className="text-link" href="/contact#water-test">Vind je waterbedrijf om de aanvraag te bezorgen <span aria-hidden="true">↗</span></Link>
+      {draft && <div className="motion-reveal"><CopyDraft title={"Draft request"} text={draft} button={"Copy request"} headingRef={draftHeading} /></div>}
+      <Link className="text-link" href="/contact#water-test">{"Find your water company to send your request "}<span aria-hidden="true">↗</span></Link>
     </>
   );
 }
@@ -303,11 +303,11 @@ function CopyDraft({ title, text, button, headingRef }: {
   async function copy() {
     try {
       await navigator.clipboard.writeText(text);
-      setCopyStatus({ text, message: "Gekopieerd." });
+      setCopyStatus({ text, message: "Copied." });
     } catch {
       field.current?.focus();
       field.current?.select();
-      setCopyStatus({ text, message: "De tekst is geselecteerd. Kopieer hem via je toetsenbord of het selectiemenu." });
+      setCopyStatus({ text, message: "The text is selected. Copy it using your keyboard or the selection menu." });
     }
   }
 

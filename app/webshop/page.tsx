@@ -4,7 +4,7 @@ import { Intro, NextLink } from "../_components/content";
 import { MediaPlaceholder } from "../_components/media-placeholder";
 import { webshop } from "../../inhoud.json";
 
-export const metadata: Metadata = { title: "Webshop" };
+export const metadata: Metadata = { title: "Shop" };
 
 type Product = {
   id: string;
@@ -17,16 +17,16 @@ type Product = {
 };
 
 const products: Product[] = webshop.producten;
-const euro = new Intl.NumberFormat("nl-BE", { style: "currency", currency: "EUR" });
+const euro = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR" });
 
 export default function ShopPage() {
   return (
     <>
-      <Intro section="From Tap to Trust" title="Webshop">
+      <Intro section="From Tap to Trust" title={"Shop"}>
         <p>{webshop.intro}</p>
       </Intro>
       <section className="section-space shop-catalog" aria-labelledby="shop-products">
-        <h2 id="shop-products">Onze drinkflessen</h2>
+        <h2 id="shop-products">{"Our water bottles"}</h2>
         {products.map(({ id, titel, tekst, beeldPlaceholder, afbeelding, prijs, bestelLink }) => (
           <article className="panel shop-product" key={id}>
             <div className="shop-image">
@@ -41,11 +41,11 @@ export default function ShopPage() {
               <p>{tekst}</p>
               {prijs !== null && <p className="shop-price">{euro.format(prijs)}</p>}
               {bestelLink ? (
-                <a href={bestelLink} className="button">Bestel de drinkfles</a>
+                <a href={bestelLink} className="button">{"Order the water bottle"}</a>
               ) : (
-                <p className="shop-availability">Nog niet te bestellen</p>
+                <p className="shop-availability">{"Not available to order yet"}</p>
               )}
-              <NextLink href="/kaart">Vind een tappunt</NextLink>
+              <NextLink href="/kaart">{"Find a refill point"}</NextLink>
             </div>
           </article>
         ))}

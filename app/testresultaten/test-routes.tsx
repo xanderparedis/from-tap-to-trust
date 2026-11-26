@@ -27,12 +27,12 @@ export function TestRoutes({ chlorine, lead }: { chlorine: ReactNode; lead: Reac
 
   return (
     <>
-      <nav className="test-route-picker" aria-label="Testroutes">
+      <nav className="test-route-picker" aria-label={"Test options"}>
         <a href="#chloor" aria-current={route === "chloor" ? "page" : undefined}>
-          <span className="test-route-label">Chloorproef</span><span>Meting & smaak</span>
+          <span className="test-route-label">{"Chlorine test"}</span><span>{"Measurement & taste"}</span>
         </a>
         <a href="#lood" aria-current={route === "lood" ? "page" : undefined}>
-          <span className="test-route-label">Loodzelfcheck</span><span>Je woning & leidingen</span>
+          <span className="test-route-label">{"Lead self-check"}</span><span>{"Your home & pipes"}</span>
         </a>
       </nav>
       <div hidden={route !== "chloor"}>{chlorine}</div>

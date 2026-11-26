@@ -2,42 +2,42 @@ import type { Metadata } from "next";
 import { Intro } from "../_components/content";
 import { sources } from "../_data/sources";
 
-export const metadata: Metadata = { title: "Bronnen" };
+export const metadata: Metadata = { title: "Sources" };
 
 const references = [
   {
-    title: "Herkomst en waterkwaliteit",
+    title: "Water sources and quality",
     links: [
-      ["AquaFlanders – Kwaliteit van mijn drinkwater", sources.waterQuality],
-      ["AquaFlanders – Zoek je waterbedrijf", sources.waterCompany],
-      ["AquaFlanders – Waterbedrijf voor Antwerpen", sources.antwerpWaterCompany],
-      ["AquaFlanders – Waterbedrijf voor Borsbeek", sources.borsbeek],
-      ["AquaFlanders – Waterbedrijf voor Mortsel", sources.mortsel],
-      ["AquaFlanders – Waterbedrijf voor Edegem", sources.edegem],
-      ["AquaFlanders – Waterbedrijf voor Schoten", sources.schoten],
-      ["AquaFlanders – Waterbedrijf voor Brasschaat", sources.brasschaat],
-      ["Stroomgebiedbeheerplannen – Drinkwaterproductie in het Netebekken", sources.antwerpWater],
-      ["Stroomgebiedbeheerplannen – De Maas als bron voor Antwerpen", sources.antwerpWaterOrigin],
-      ["VMM – Drinkwaterkwaliteit per leveringsgebied", sources.distributionQuality],
+      ["AquaFlanders – My drinking water quality", sources.waterQuality],
+      ["AquaFlanders – Find your water company", sources.waterCompany],
+      ["AquaFlanders – Water company for Antwerp", sources.antwerpWaterCompany],
+      ["AquaFlanders – Water company for Borsbeek", sources.borsbeek],
+      ["AquaFlanders – Water company for Mortsel", sources.mortsel],
+      ["AquaFlanders – Water company for Edegem", sources.edegem],
+      ["AquaFlanders – Water company for Schoten", sources.schoten],
+      ["AquaFlanders – Water company for Brasschaat", sources.brasschaat],
+      ["River basin management plans – Drinking water production in the Nete basin", sources.antwerpWater],
+      ["River basin management plans – The Meuse as a source for Antwerp", sources.antwerpWaterOrigin],
+      ["VMM – Drinking water quality by supply area", sources.distributionQuality],
     ],
   },
   {
-    title: "Waterproblemen en thuistests",
+    title: "Water issues and home tests",
     links: [
-      ["VMM – Leidingen en toestellen in je gebouw", sources.waterInstallation],
-      ["VMM – Loden leidingen herkennen en vervangen", sources.lead],
-      ["Vlaanderen – Loden waterleidingen in huur- en eigendomswoningen", sources.leadHousing],
-      ["Health Canada – Vrij, totaal en gebonden chloor", sources.chlorine],
-      ["De Watergroep – Drinkwaterkwaliteit en smaaktips", sources.taste],
-      ["AquaFlanders – Contact met je waterbedrijf", sources.waterContact],
+      ["VMM – Pipes and appliances in your building", sources.waterInstallation],
+      ["VMM – Identifying and replacing lead pipes", sources.lead],
+      ["Flanders – Lead water pipes in rented and owner-occupied homes", sources.leadHousing],
+      ["Health Canada – Free, total and combined chlorine", sources.chlorine],
+      ["De Watergroep – Drinking water quality and taste tips", sources.taste],
+      ["AquaFlanders – Contact your water company", sources.waterContact],
     ],
   },
   {
-    title: "Kaart en openbare tappunten",
+    title: "Map and public refill points",
     links: [
-      ["Stad Antwerpen – Dataset drinkwaterfonteinen", sources.fountainData],
-      ["Stad Antwerpen – Overzicht en meldingen", sources.fountains],
-      ["OpenStreetMap – Kaartgegevens en licentie", "https://www.openstreetmap.org/copyright"],
+      ["City of Antwerp – Drinking water fountain dataset", sources.fountainData],
+      ["City of Antwerp – Overview and reporting", sources.fountains],
+      ["OpenStreetMap – Map data and licence", "https://www.openstreetmap.org/copyright"],
     ],
   },
 ] as const;
@@ -45,8 +45,8 @@ const references = [
 export default function SourcesPage() {
   return (
     <>
-      <Intro section="From Tap to Trust" title="Bronnen">
-        <p>Hier vind je de achtergrondinformatie en kaartgegevens die we op het platform gebruiken.</p>
+      <Intro section="From Tap to Trust" title={"Sources"}>
+        <p>{"Find the background information and map data used on this platform here."}</p>
       </Intro>
       <div className="card-grid section-space">
         {references.map(({ title, links }) => (
@@ -61,12 +61,12 @@ export default function SourcesPage() {
         ))}
       </div>
       <section className="panel section-space">
-        <h2>Veelgestelde vragen</h2>
-        <p>De vragen en antwoorden zijn overgenomen uit het projectdocument <cite>Veel gestelde vragen</cite>, met vier thema’s: veiligheid en kwaliteit, smaak en geur, thuis en behandeling, en keuzes en misvattingen. Het kwaliteitscijfer van 99,56% heeft betrekking op analyses aan de kraan in Vlaanderen in 2024.</p>
+        <h2>{"Frequently asked questions"}</h2>
+        <p>{"The questions and answers are based on the project document "}<cite>{"Frequently asked questions"}</cite>{", covering four themes: safety and quality, taste and smell, water at home and treatment, and choices and misconceptions. The quality figure of 99.56% refers to tap water analyses in Flanders in 2024."}</p>
       </section>
       <section className="panel section-space">
-        <h2>Eigen onderzoek</h2>
-        <p>De samenvatting van onze enquêtes en straatgesprekken is gebaseerd op het academisch projectrapport <cite>From Tap to Trust</cite>, versie 1.4, pp. 27–30.</p>
+        <h2>{"Our research"}</h2>
+        <p>{"The summary of our surveys and street interviews is based on the academic project report "}<cite>From Tap to Trust</cite>{", version 1.4, pp. 27–30."}</p>
       </section>
     </>
   );

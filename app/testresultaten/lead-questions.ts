@@ -1,54 +1,54 @@
 export const leadQuestions = [
   {
     id: "year",
-    label: "Bouwjaar",
-    title: "Wanneer werd je woning gebouwd?",
+    label: "Year of construction",
+    title: "When was your home built?",
     options: [
-      ["before1970", "Vóór 1970"],
-      ["from1970", "In of na 1970"],
-      ["unknown", "Ik weet het niet"],
+      ["before1970", "Before 1970"],
+      ["from1970", "In or after 1970"],
+      ["unknown", "I don't know"],
     ],
   },
   {
     id: "replacement",
-    label: "Vervanging",
-    title: "Zijn de drinkwaterleidingen in je woning ooit volledig vervangen?",
+    label: "Replacement",
+    title: "Have the drinking water pipes in your home ever been fully replaced?",
     options: [
-      ["all", "Ja, alle drinkwaterleidingen zijn vervangen"],
-      ["partial", "Slechts gedeeltelijk, bijvoorbeeld bij een renovatie van de keuken of badkamer"],
-      ["none", "Nee, voor zover ik weet niet"],
-      ["unknown", "Ik weet het niet"],
+      ["all", "Yes, all drinking water pipes have been replaced"],
+      ["partial", "Only partially, for example during a kitchen or bathroom renovation"],
+      ["none", "No, not as far as I know"],
+      ["unknown", "I don't know"],
     ],
   },
   {
     id: "inspection",
-    label: "Eerdere vaststelling",
-    title: "Is er ooit vastgesteld dat er loden drinkwaterleidingen in je woning aanwezig zijn of waren?",
+    label: "Previous findings",
+    title: "Have lead drinking water pipes ever been identified in your home?",
     options: [
-      ["present", "Ja, en ze zijn nog niet volledig vervangen"],
-      ["removed", "Ja, maar ze zijn ondertussen volledig vervangen"],
-      ["clear", "Nee, bij een eerdere controle werden er geen vastgesteld"],
-      ["unknown", "Niet gecontroleerd of ik weet het niet"],
+      ["present", "Yes, and they have not yet been fully replaced"],
+      ["removed", "Yes, but they have since been fully replaced"],
+      ["clear", "No, a previous inspection did not find any"],
+      ["unknown", "Not checked, or I don't know"],
     ],
   },
   {
     id: "housing",
-    label: "Woonsituatie",
-    title: "Huur je de woning of ben je eigenaar?",
-    hint: "Dit bepaalt welke vervolgstappen je te zien krijgt.",
+    label: "Housing situation",
+    title: "Do you rent or own your home?",
+    hint: "This determines which next steps you will see.",
     options: [
-      ["tenant", "Ik ben huurder"],
-      ["owner", "Ik ben eigenaar"],
+      ["tenant", "I am a tenant"],
+      ["owner", "I am the owner"],
     ],
   },
   {
     id: "household",
-    label: "Huishouden",
-    title: "Zijn er baby’s, kinderen jonger dan zes jaar of zwangere vrouwen in je huishouden?",
-    hint: "Dit bepaalt mee hoe dringend opvolging is. Dit antwoord verandert je indicatiescore niet.",
+    label: "Household",
+    title: "Are there babies, children under six or pregnant women in your household?",
+    hint: "This helps determine how urgent follow-up is. This answer does not change your indication score.",
     options: [
-      ["yes", "Ja"],
-      ["no", "Nee"],
+      ["yes", "Yes"],
+      ["no", "No"],
     ],
   },
 ] as const;
@@ -67,17 +67,17 @@ const possibleFrom = 30;
 const strongFrom = 60;
 
 export const leadResultLabels = {
-  few: "Weinig aanwijzingen",
-  possible: "Mogelijke aanwijzingen",
-  strong: "Sterke aanwijzingen",
-  confirmed: "Loden leidingen bevestigd",
+  few: "Few indications",
+  possible: "Possible indications",
+  strong: "Strong indications",
+  confirmed: "Lead pipes confirmed",
 } as const;
 
 const urgencyLabels = {
-  low: "Laag",
-  check: "Aanvullende controle",
-  elevated: "Verhoogd",
-  high: "Hoog",
+  low: "Low",
+  check: "Further checks",
+  elevated: "Elevated",
+  high: "High",
 } as const;
 
 export function getLeadResult(answers: LeadAnswers) {

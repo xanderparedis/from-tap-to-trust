@@ -6,10 +6,10 @@
     "paginas": null
   },
   "start": {
-    "label": "Burgeronderzoek naar kraanwater",
-    "titel": "Leer je kraanwater kennen.",
-    "intro": "Van bron tot kraan. Ontdek waar je water vandaan komt, vind een tappunt in de buurt en bekijk hoe een thuistest werkt.",
-    "videoPlaceholder": "Van de kraan naar de testkit",
+    "label": "Citizen science for tap water",
+    "titel": "Get to know your tap water.",
+    "intro": "From source to tap. Discover where your water comes from, find a refill point nearby and explore how a home test works.",
+    "videoPlaceholder": "From the tap to the test kit",
     "missie": {
       "titel": "What we do",
       "intro": "We make tap water the natural choice by building trust, sharing reliable information, and improving its taste.",
@@ -21,51 +21,66 @@
     },
     "functiesTitel": "Explore your tap water",
     "functies": [
-      { "titel": "Test your tap", "tekst": "Get to know your tap water through home testing and citizen science.", "adres": "/testresultaten", "actie": "Go to my tests" },
-      { "titel": "Where does my tap water come from?", "tekst": "Follow the journey from source to tap and find answers to your questions.", "adres": "/ontdek", "actie": "Discover my tap water" },
-      { "titel": "I’m thirsty", "tekst": "Closest public tap point? Explore the map for a refill nearby and discover our project’s participating places.", "adres": "/kaart", "actie": "Find a refill" }
+      {
+        "titel": "Test your tap",
+        "tekst": "Get to know your tap water through home testing and citizen science.",
+        "adres": "/testresultaten",
+        "actie": "Go to my tests"
+      },
+      {
+        "titel": "Where does my tap water come from?",
+        "tekst": "Follow the journey from source to tap and find answers to your questions.",
+        "adres": "/ontdek",
+        "actie": "Discover my tap water"
+      },
+      {
+        "titel": "I’m thirsty",
+        "tekst": "Closest public tap point? Explore the map for a refill nearby and discover our project’s participating places.",
+        "adres": "/kaart",
+        "actie": "Find a refill"
+      }
     ]
   },
   "nieuwsbrief": {
-    "titel": "Nieuwsbrief",
-    "intro": "Updates van From Tap to Trust over ons burgeronderzoek naar kraanwater.",
+    "titel": "Newsletter",
+    "intro": "From Tap to Trust updates on our citizen science research into tap water.",
     "berichten": [
       {
-        "rubriek": "Onderzoek",
-        "titel": "Wat we hoorden over kraanwater",
-        "tekst": "In onze enquêtes en straatgesprekken kwamen smaak, vertrouwen, gewoonte en gemak terug. Sommige deelnemers vertrouwen kraanwater en kiezen toch voor flessenwater vanwege hun smaakvoorkeur.",
-        "beeldPlaceholder": "Straatgesprek met deelnemers",
+        "rubriek": "Research",
+        "titel": "What we heard about tap water",
+        "tekst": "Taste, trust, habit and convenience came up in our surveys and street interviews. Some participants trust tap water but still choose bottled water because of their taste preferences.",
+        "beeldPlaceholder": "Street interview with participants",
         "link": null
       },
       {
         "rubriek": "Project",
-        "titel": "Het ontwerp van de testkit",
-        "tekst": "We werken aan een kit waarmee deelnemers thuis chloor in kraanwater kunnen meten. In dit artikel tonen we hoe de verpakking en de onderdelen vorm krijgen.",
-        "beeldPlaceholder": "Testkit en onderdelen",
+        "titel": "Designing the test kit",
+        "tekst": "We are developing a kit that lets participants measure chlorine in tap water at home. This article shows how the packaging and components are taking shape.",
+        "beeldPlaceholder": "Test kit and components",
         "link": null
       },
       {
-        "rubriek": "Voorbeeld · Evenement",
-        "titel": "Samen kraanwater proeven",
-        "tekst": "Op een buurtmoment zouden deelnemers hun smaakervaring kunnen vergelijken en de testkit uitproberen. Hier komen later de plaats en datum.",
-        "beeldPlaceholder": "Proeftafel met glazen water"
+        "rubriek": "Example · Event",
+        "titel": "Tasting tap water together",
+        "tekst": "At a neighbourhood gathering, participants could compare their taste experiences and try the test kit. The location and date will appear here later.",
+        "beeldPlaceholder": "Tasting table with glasses of water"
       },
       {
-        "rubriek": "Voorbeeld · Partners",
-        "titel": "Wie helpt het onderzoek vooruit?",
-        "tekst": "Hier stellen we later de organisaties voor die workshops, materiaal of expertise bijdragen aan het burgeronderzoek.",
-        "beeldPlaceholder": "Portret of logo van een projectpartner"
+        "rubriek": "Example · Partners",
+        "titel": "Who is helping the research move forward?",
+        "tekst": "This is where we will introduce the organisations contributing workshops, materials or expertise to the citizen science project.",
+        "beeldPlaceholder": "Portrait or logo of a project partner"
       }
     ]
   },
   "webshop": {
-    "intro": "Bekijk de drinkfles van From Tap to Trust. Neem je kraanwater mee en vul onderweg bij.",
+    "intro": "Discover the From Tap to Trust water bottle. Take your tap water with you and refill on the go.",
     "producten": [
       {
         "id": "drinkfles",
-        "titel": "From Tap to Trust-drinkfles",
-        "tekst": "Een hervulbare fles voor je dagelijkse kraanwater, thuis en onderweg.",
-        "beeldPlaceholder": "Productfoto van de drinkfles",
+        "titel": "From Tap to Trust water bottle",
+        "tekst": "A refillable bottle for your everyday tap water, at home and on the go.",
+        "beeldPlaceholder": "Product photo of the water bottle",
         "afbeelding": null,
         "prijs": null,
         "bestelLink": null
@@ -73,41 +88,41 @@
     ]
   },
   "herkomst": {
-    "titel": "Waar komt mijn water vandaan?",
-    "intro": "Zoek je buurt, district of postcode. Voor Stad Antwerpen tonen we het waterbedrijf en leggen we uit waar het drinkwater in de regio vandaan komt.",
+    "titel": "Where does my water come from?",
+    "intro": "Search your neighbourhood, district or postcode. For the City of Antwerp, we show your water company and explain where the region's drinking water comes from.",
     "antwerpen": {
-      "titel": "Van de Maas naar Antwerpen",
-      "intro": "Het Antwerpse drinkwater wordt gemaakt van oppervlaktewater. De Maas voedt de kanalen waar Water-link water inneemt voor de productie van drinkwater.",
+      "titel": "From the Meuse to Antwerp",
+      "intro": "Antwerp's drinking water is made from surface water. The Meuse feeds the canals where Water-link takes in water for drinking water production.",
       "leverancier": "Water-link",
-      "brontype": "Oppervlaktewater",
+      "brontype": "Surface water",
       "oorsprong": "Maas",
       "sites": [
         {
           "titel": "Oelegem (Ranst)",
-          "tekst": "Waterwinning via het Albertkanaal."
+          "tekst": "Water intake from the Albert Canal."
         },
         {
           "titel": "Walem (Mechelen)",
-          "tekst": "Waterwinning via het Netekanaal."
+          "tekst": "Water intake from the Nete Canal."
         }
       ],
-      "schaal": "Dit is informatie voor de Antwerpse regio. Bij je waterbedrijf kun je navragen hoe jouw aansluiting wordt bevoorraad.",
-      "onbekend": "Gebruik de officiële postcodezoeker om je waterbedrijf op te zoeken. De lokale uitleg over waterwinning op dit platform is uitgewerkt voor Stad Antwerpen."
+      "schaal": "This information covers the Antwerp region. Ask your water company how your specific connection is supplied.",
+      "onbekend": "Use the official postcode search to find your water company. The local information on water sources on this platform covers the City of Antwerp."
     },
     "route": {
-      "titel": "Van bron tot kraan",
+      "titel": "From source to tap",
       "stappen": [
         {
-          "titel": "Water winnen",
-          "tekst": "Drinkwaterbedrijven halen ruwwater uit de bodem of gebruiken oppervlaktewater uit bijvoorbeeld een rivier of kanaal."
+          "titel": "Collecting water",
+          "tekst": "Water companies extract raw water from the ground or use surface water, for example from a river or canal."
         },
         {
-          "titel": "Zuiveren en verdelen",
-          "tekst": "In het drinkwaterproductiecentrum wordt het ruwwater behandeld. Via het distributienet komt het drinkwater bij gebouwen terecht. Het waterbedrijf controleert de kwaliteit tijdens de productie en levering."
+          "titel": "Treatment and distribution",
+          "tekst": "Raw water is treated at the drinking water production centre. It reaches buildings through the distribution network. The water company checks its quality during production and supply."
         },
         {
-          "titel": "Door de leidingen in je gebouw",
-          "tekst": "Vanaf de aansluiting loopt het water door de binneninstallatie naar je kraan. De materialen en het onderhoud van die leidingen en toestellen kunnen invloed hebben op het water uit je kraan."
+          "titel": "Through the pipes in your building",
+          "tekst": "From the connection, water flows through the internal plumbing to your tap. The materials and maintenance of these pipes and appliances can affect the water from your tap."
         }
       ]
     }

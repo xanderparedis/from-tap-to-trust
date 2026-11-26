@@ -30,7 +30,7 @@ export default function Home() {
               <p className="section-label">{start.label}</p>
               <h1 id="start-title">{start.titel}</h1>
               <p>{start.intro}</p>
-              <a className="button start-button" href="#ontdek">Ontdek de app <span aria-hidden="true">↓</span></a>
+              <a className="button start-button" href="#ontdek">{"Explore the app "}<span aria-hidden="true">↓</span></a>
             </div>
             <div className="start-hero-art" data-film-target>
               <div className="start-film">
@@ -55,7 +55,7 @@ export default function Home() {
             <h2>{start.waarom.titel}</h2>
             <p className="home-why-statement">{start.waarom.tekst}</p>
           </div>
-          <p>Ontdek <Link href="/ontdek">waar jouw kraanwater vandaan komt</Link> en bekijk de <Link href="/veelgestelde-vragen">veelgestelde vragen</Link>.</p>
+          <p>{"Discover "}<Link href="/ontdek">{"where your tap water comes from"}</Link>{" and browse the "}<Link href="/veelgestelde-vragen">{"frequently asked questions"}</Link>.</p>
         </div>
       </section>
 

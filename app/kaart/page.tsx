@@ -10,9 +10,9 @@ export default function MapPage() {
   return (
     <>
       <Intro section="Platform" title="Trusted by us">
-        <p>Vind een plek om je drinkbus bij te vullen. Zoek in Antwerpen op wijk, straat, district of postcode.</p>
+        <p>{"Find somewhere to refill your bottle. Search Antwerp by neighbourhood, street, district or postcode."}</p>
       </Intro>
-      <Suspense fallback={<p className="panel" role="status">Kaart laden…</p>}>
+      <Suspense fallback={<p className="panel" role="status">{"Loading map…"}</p>}>
         <WaterMap />
       </Suspense>
     </>

@@ -9,16 +9,16 @@ import "./_components/mascot-helper.css";
 
 export const metadata: Metadata = {
   title: { default: "From Tap to Trust", template: "%s | From Tap to Trust" },
-  description: "Ontdek waar je kraanwater vandaan komt, vind een tappunt en verken de thuistest.",
+  description: "Discover where your tap water comes from, find a refill point and explore home testing.",
 };
 
 export const viewport: Viewport = { themeColor: "#edf2fd", viewportFit: "cover" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="nl">
+    <html lang="en">
       <body>
-        <a className="skip-link" href="#inhoud">Direct naar inhoud</a>
+        <a className="skip-link" href="#inhoud">{"Skip to content"}</a>
         <SiteNav />
         <main id="inhoud" className="frame" tabIndex={-1}>{children}</main>
         <footer className="site-footer">
@@ -28,10 +28,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Image src="/brand/water-symbol.png" alt="" width={28} height={28} unoptimized />
               <span>From Tap to Trust</span>
             </Link>
-            <nav className="footer-links" aria-label="Links onderaan">
-              <Link href="/veelgestelde-vragen">Veelgestelde vragen</Link>
-              <Link href="/bronnen">Bronnen</Link>
-              <Link href="/contact">Iets mis? Neem contact op <span aria-hidden="true">↗</span></Link>
+            <nav className="footer-links" aria-label={"Footer links"}>
+              <Link href="/veelgestelde-vragen">{"Frequently asked questions"}</Link>
+              <Link href="/bronnen">{"Sources"}</Link>
+              <Link href="/contact">{"Something wrong? Get in touch "}<span aria-hidden="true">↗</span></Link>
             </nav>
           </div>
         </footer>

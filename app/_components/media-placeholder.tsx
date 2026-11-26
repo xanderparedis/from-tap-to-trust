@@ -1,9 +1,9 @@
 type MediaPlaceholderProps = {
   label: string;
-  kind?: "Foto" | "Video" | "Illustratie";
+  kind?: "Photo" | "Video" | "Illustration";
 };
 
-export function MediaPlaceholder({ label, kind = "Foto" }: MediaPlaceholderProps) {
+export function MediaPlaceholder({ label, kind = "Photo" }: MediaPlaceholderProps) {
   return (
     <div className="media-placeholder">
       <div className="media-label">

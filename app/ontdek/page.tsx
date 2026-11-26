@@ -3,35 +3,35 @@ import Link from "next/link";
 import { AppIcon } from "../_components/app-icon";
 import { Intro } from "../_components/content";
 
-export const metadata: Metadata = { title: "Ontdek" };
+export const metadata: Metadata = { title: "Discover" };
 
 const topics = [
   {
     href: "/mijn-water", icon: "water",
-    title: "Waar komt mijn kraanwater vandaan?",
-    description: "Zoek je buurt of postcode en volg de reis van bron tot kraan.",
-    action: "Ontdek de herkomst",
+    title: "Where does my tap water come from?",
+    description: "Search your neighbourhood or postcode and follow the journey from source to tap.",
+    action: "Discover the source",
   },
   {
     href: "/veelgestelde-vragen#keuzes", icon: "discover",
-    title: "Feiten & misvattingen",
-    description: "Verken veelgehoorde ideeën over kraanwater, flessenwater en de keuzes die we maken.",
-    action: "Bekijk de feiten",
+    title: "Facts & misconceptions",
+    description: "Explore common ideas about tap water, bottled water and the choices we make.",
+    action: "Explore the facts",
   },
   {
     href: "/veelgestelde-vragen", icon: "water",
-    title: "Veelgestelde vragen",
-    description: "Vind antwoorden over kwaliteit, smaak, je leidingen en water thuis.",
-    action: "Vind je antwoord",
+    title: "Frequently asked questions",
+    description: "Find answers about quality, taste, your pipes and water at home.",
+    action: "Find your answer",
   },
 ] as const;
 
 export default function DiscoverPage() {
   return <>
-    <Intro section="Ontdek" title="Leer je kraanwater kennen.">
-      <p>Van de herkomst van je water tot de vragen die je erover hebt. Waar ben je benieuwd naar?</p>
+    <Intro section={"Discover"} title={"Get to know your tap water."}>
+      <p>{"From your water's source to the questions you have about it. What would you like to know?"}</p>
     </Intro>
-    <nav className="start-grid section-space" aria-label="Ontdek je kraanwater">
+    <nav className="start-grid section-space" aria-label={"Discover your tap water"}>
       {topics.map(({ href, icon, title, description, action }) => (
         <Link className="start-tile" href={href} key={href}>
           <span className="tile-icon"><AppIcon name={icon} /></span>

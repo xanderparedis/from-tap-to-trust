@@ -6,9 +6,9 @@ import { AppIcon } from "./app-icon";
 import { WaterMascot } from "./water-mascot";
 
 const topics = [
-  { href: "/mijn-water", icon: "water", title: "Waar komt mijn water vandaan?", detail: "Zoek je buurt of postcode." },
-  { href: "/kaart", icon: "map", title: "Waar kan ik mijn fles vullen?", detail: "Vind een openbaar tappunt." },
-  { href: "/testresultaten", icon: "tests", title: "Hoe werkt de thuistest?", detail: "Verken de test en je resultaten." },
+  { href: "/mijn-water", icon: "water", title: "Where does my water come from?", detail: "Search your neighbourhood or postcode." },
+  { href: "/kaart", icon: "map", title: "Where can I refill my bottle?", detail: "Find a public refill point." },
+  { href: "/testresultaten", icon: "tests", title: "How does the home test work?", detail: "Explore the test and your results." },
 ] as const;
 
 export function MascotHelper() {
@@ -81,20 +81,20 @@ export function MascotHelper() {
   }, []);
 
   return (
-    <aside ref={root} className="mascot-helper" data-closing={closing} aria-label="Hulp bij From Tap to Trust">
+    <aside ref={root} className="mascot-helper" data-closing={closing} aria-label={"From Tap to Trust help"}>
       {open && (
         <div id={id} className="mascot-helper-popover" role="dialog" aria-modal="false" aria-labelledby={`${id}-title`} aria-hidden={closing || undefined} inert={closing}>
           <div className="mascot-helper-panel">
             <header className="mascot-helper-heading">
               <div>
-                <p className="mascot-helper-eyebrow">Ik help je op weg</p>
-                <h2 id={`${id}-title`}>Waar zoek je hulp bij?</h2>
+                <p className="mascot-helper-eyebrow">{"Let me help you"}</p>
+                <h2 id={`${id}-title`}>{"What do you need help with?"}</h2>
               </div>
-              <button ref={closeButton} type="button" className="mascot-helper-close" onClick={() => close()} aria-label="Hulp sluiten">
+              <button ref={closeButton} type="button" className="mascot-helper-close" onClick={() => close()} aria-label={"Close help"}>
                 <span aria-hidden="true">×</span>
               </button>
             </header>
-            <nav className="mascot-helper-topics" aria-label="Kies je hulpvraag">
+            <nav className="mascot-helper-topics" aria-label={"Choose a help topic"}>
               {topics.map(topic => (
                 <Link key={topic.href} href={topic.href} className="mascot-helper-topic" onClick={() => close(false)}>
                   <span className="mascot-helper-topic-icon"><AppIcon name={topic.icon} /></span>
@@ -104,8 +104,8 @@ export function MascotHelper() {
               ))}
             </nav>
             <div className="mascot-helper-more">
-              <Link href="/veelgestelde-vragen" onClick={() => close(false)}>Bekijk alle veelgestelde vragen <span aria-hidden="true">↗</span></Link>
-              <Link href="/contact" onClick={() => close(false)}>Kom je er niet uit? Neem contact op.</Link>
+              <Link href="/veelgestelde-vragen" onClick={() => close(false)}>{"Browse all frequently asked questions "}<span aria-hidden="true">↗</span></Link>
+              <Link href="/contact" onClick={() => close(false)}>{"Still need help? Get in touch."}</Link>
             </div>
           </div>
           <div className="mascot-helper-window"><WaterMascot /></div>
@@ -113,7 +113,7 @@ export function MascotHelper() {
       )}
       <button ref={launcher} type="button" className="mascot-helper-launcher" aria-expanded={open && !closing} aria-controls={open ? id : undefined} aria-haspopup="dialog" onClick={() => open && !closing ? close() : show()}>
         <span className="mascot-helper-question" aria-hidden="true">?</span>
-        <span>{open && !closing ? "Hulp sluiten" : "Hulp nodig?"}</span>
+        <span>{open && !closing ? "Close help" : "Need help?"}</span>
       </button>
     </aside>
   );
