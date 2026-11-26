@@ -4,7 +4,7 @@
   z-index: 950;
   right: max(1rem, env(safe-area-inset-right, 0px));
   bottom: calc(var(--dock-space, 0px) + 1rem);
-  width: min(22rem, calc(100vw - 2rem));
+  width: min(25rem, calc(100vw - 2rem));
   pointer-events: none;
 }
 
@@ -56,16 +56,29 @@
 .mascot-helper-eyebrow { margin: 0 0 .3rem; font-size: .75rem; }
 .mascot-helper-heading h2 { margin: 0; font-size: 1.45rem; letter-spacing: -.025em; }
 .mascot-helper-close { flex: none; display: grid; place-items: center; min-width: 2.6rem; min-height: 2.6rem; padding: 0; border: 0; border-radius: 50%; background: var(--brand-paper); color: inherit; font-size: 1.5rem; cursor: pointer; }
-.mascot-helper-topics { display: grid; margin-top: .85rem; }
-.mascot-helper-topic { display: flex; align-items: center; gap: .6rem; padding: .7rem .1rem; border-bottom: 1px solid var(--surface-border); text-decoration: none; }
-.mascot-helper-topic:hover { background: var(--brand-paper); }
-.mascot-helper-topic > span:nth-child(2) { flex: 1; min-width: 0; }
-.mascot-helper-topic strong { display: block; font-family: var(--brand-heading); font-size: .93rem; line-height: 1.15; }
-.mascot-helper-topic > span > span { display: block; margin-top: .2rem; font-size: .75rem; }
-.mascot-helper-topic-icon { flex: none; padding: .4rem; border-radius: 50%; background: var(--brand-paper); }
-.mascot-helper-topic svg { display: block; width: 1.2rem; height: 1.2rem; flex: none; }
-.mascot-helper-more { display: grid; gap: .6rem; margin-top: .9rem; font-size: .78rem; }
-.mascot-helper-more a { text-underline-offset: .2em; }
+.mascot-helper-chat-panel {
+  display: flex;
+  flex-direction: column;
+  height: min(34rem, calc(100dvh - var(--site-header-height, 4.8rem) - var(--dock-space, 0px) - 12.5rem));
+  overflow: clip;
+}
+.mascot-helper-heading { flex: none; }
+.mascot-chat { display: flex; flex-direction: column; flex: 1; min-height: 0; gap: .65rem; margin-top: .7rem; }
+.mascot-chat-toolbar { display: flex; align-items: center; justify-content: space-between; gap: .5rem; font-size: .75rem; }
+.mascot-chat-toolbar button { flex: none; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
+.mascot-chat-toolbar button:disabled { opacity: .5; cursor: default; }
+.mascot-chat-log { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: .15rem .2rem .25rem; scrollbar-width: thin; }
+.mascot-chat-message { width: fit-content; max-width: 95%; margin-bottom: .65rem; padding: .8rem; border-radius: .9rem .9rem .9rem .2rem; background: var(--brand-paper); font-size: .9rem; line-height: 1.4; overflow-wrap: anywhere; }
+.mascot-chat-user { margin-left: auto; border-radius: .9rem .9rem .2rem .9rem; background: var(--brand-blue); color: var(--surface); }
+.mascot-chat-links { display: grid; gap: .45rem; margin-top: .65rem; font-family: var(--brand-heading); }
+.mascot-chat-links a { text-decoration: underline; text-underline-offset: .2em; }
+.mascot-chat-suggestions { display: flex; flex-wrap: wrap; flex: none; gap: .4rem; }
+.mascot-chat-suggestions button { padding: .45rem .6rem; border: 1px solid var(--surface-border); border-radius: .7rem; font-size: .8rem; line-height: 1.2; text-align: left; cursor: pointer; }
+.mascot-chat-suggestions button:hover { background: var(--brand-paper); }
+.mascot-chat-form { display: flex; flex: none; align-items: center; gap: .5rem; }
+.mascot-chat-form input { flex: 1; min-width: 0; min-height: 2.8rem; padding: .65rem; border: 1px solid var(--brand-blue); border-radius: .75rem; background: var(--surface); color: inherit; font-size: 1rem; }
+.mascot-chat-form button { align-self: stretch; padding: .6rem .8rem; border-radius: .75rem; background: var(--brand-blue); color: var(--surface); cursor: pointer; }
+.mascot-chat-form button:disabled { opacity: .5; cursor: default; }
 
 .mascot-helper-window { position: relative; height: 8.2rem; overflow: hidden; pointer-events: none; }
 .mascot-helper .animated-mascot {
@@ -87,6 +100,13 @@
 @media (max-width: 33rem) {
   .mascot-helper { --helper-mascot-size: 10.5rem; right: .8rem; bottom: calc(var(--dock-space, 0px) + .7rem); width: min(21rem, calc(100vw - 1.6rem)); }
   .mascot-helper-window { height: 7rem; }
+}
+
+@media (max-height: 43rem) {
+  .mascot-helper { --helper-mascot-size: 7rem; }
+  .mascot-helper-window { height: 4rem; }
+  .mascot-helper-chat-panel { height: calc(100dvh - var(--site-header-height, 4.8rem) - var(--dock-space, 0px) - 8.5rem); max-height: none; }
+  .mascot-chat-suggestions { display: none; }
 }
 
 @keyframes helper-crawl-in {

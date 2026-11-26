@@ -1,17 +1,20 @@
 "use client";
 
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
-import { AppIcon } from "./app-icon";
 import { WaterMascot } from "./water-mascot";
+import { MascotChat } from "./mascot-chat";
+import type { GuideMessage } from "./mascot-chat";
+import { answerWebsiteQuestion } from "./mascot-knowledge";
 
-const topics = [
-  { href: "/mijn-water", icon: "water", title: "Where does my water come from?", detail: "Search your neighbourhood or postcode." },
-  { href: "/kaart", icon: "map", title: "Where can I refill my bottle?", detail: "Find a public refill point." },
-  { href: "/testresultaten", icon: "tests", title: "How does the home test work?", detail: "Explore the test and your results." },
-] as const;
+function welcome(): GuideMessage[] {
+  const answer = answerWebsiteQuestion("");
+  return [{ id: 0, role: "assistant", text: answer.text, answer }];
+}
 
 export function MascotHelper() {
+  const pathname = usePathname();
+  const [messages, setMessages] = useState<GuideMessage[]>(welcome);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const id = "mascot-help-" + useId().replace(/:/g, "");
@@ -19,6 +22,16 @@ export function MascotHelper() {
   const closeButton = useRef<HTMLButtonElement>(null);
   const root = useRef<HTMLElement>(null);
   const exitTimer = useRef<number | null>(null);
+
+  function ask(question: string) {
+    setMessages(previous => {
+      const context = [...previous].reverse().find(message => message.answer)?.answer;
+      const answer = answerWebsiteQuestion(question, pathname, context);
+      const nextId = (previous.at(-1)?.id ?? 0) + 1;
+      return [...previous.slice(-37), { id: nextId, role: "user", text: question },
+        { id: nextId + 1, role: "assistant", text: answer.text, answer }];
+    });
+  }
 
   useEffect(() => {
     const button = launcher.current;
@@ -63,7 +76,11 @@ export function MascotHelper() {
   useEffect(() => {
     if (!open || closing) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const focus = window.setTimeout(() => closeButton.current?.focus({ preventScroll: true }), reducedMotion ? 0 : 850);
+    const focus = window.setTimeout(() => {
+      if (!root.current?.querySelector(".mascot-helper-panel")?.contains(document.activeElement)) {
+        closeButton.current?.focus({ preventScroll: true });
+      }
+    }, reducedMotion ? 0 : 850);
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         close();
@@ -84,29 +101,17 @@ export function MascotHelper() {
     <aside ref={root} className="mascot-helper" data-closing={closing} aria-label={"From Tap to Trust help"}>
       {open && (
         <div id={id} className="mascot-helper-popover" role="dialog" aria-modal="false" aria-labelledby={`${id}-title`} aria-hidden={closing || undefined} inert={closing}>
-          <div className="mascot-helper-panel">
+          <div className="mascot-helper-panel mascot-helper-chat-panel">
             <header className="mascot-helper-heading">
               <div>
-                <p className="mascot-helper-eyebrow">{"Let me help you"}</p>
-                <h2 id={`${id}-title`}>{"What do you need help with?"}</h2>
+                <p className="mascot-helper-eyebrow">Your website guide</p>
+                <h2 id={`${id}-title`}>Ask your water guide</h2>
               </div>
               <button ref={closeButton} type="button" className="mascot-helper-close" onClick={() => close()} aria-label={"Close help"}>
                 <span aria-hidden="true">×</span>
               </button>
             </header>
-            <nav className="mascot-helper-topics" aria-label={"Choose a help topic"}>
-              {topics.map(topic => (
-                <Link key={topic.href} href={topic.href} className="mascot-helper-topic" onClick={() => close(false)}>
-                  <span className="mascot-helper-topic-icon"><AppIcon name={topic.icon} /></span>
-                  <span><strong>{topic.title}</strong><span>{topic.detail}</span></span>
-                  <AppIcon name="arrow" />
-                </Link>
-              ))}
-            </nav>
-            <div className="mascot-helper-more">
-              <Link href="/veelgestelde-vragen" onClick={() => close(false)}>{"Browse all frequently asked questions "}<span aria-hidden="true">↗</span></Link>
-              <Link href="/contact" onClick={() => close(false)}>{"Still need help? Get in touch."}</Link>
-            </div>
+            <MascotChat messages={messages} onAsk={ask} onReset={() => setMessages(welcome())} onNavigate={() => close(false)} />
           </div>
           <div className="mascot-helper-window"><WaterMascot /></div>
         </div>
