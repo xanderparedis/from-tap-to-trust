@@ -15,6 +15,7 @@
   letter-spacing: -.04em;
   line-height: 1.1;
 }
+.home-mission h2 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); line-height: 1.02; }
 
 .home-mission-copy { display: grid; gap: 1.25rem; }
 .home-mission-copy p { max-width: 48ch; }
