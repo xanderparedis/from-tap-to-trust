@@ -6,6 +6,7 @@ import { MascotSlot } from "./_components/mascot-slot";
 import { StartMotion } from "./_components/start-motion";
 import { start, nieuwsbrief } from "../inhoud.json";
 import { MediaPlaceholder } from "./_components/media-placeholder";
+import { HeroVideo } from "./_components/hero-video";
 import "./home-story.css";
 
 type NewsletterEntry = {
@@ -34,7 +35,7 @@ export default function Home() {
             </div>
             <div className="start-hero-art" data-film-target>
               <div className="start-film">
-                <MediaPlaceholder kind="Video" label={start.videoPlaceholder} />
+                <HeroVideo />
               </div>
               <MascotSlot slot="start" />
             </div>
