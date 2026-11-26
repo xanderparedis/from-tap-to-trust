@@ -1,0 +1,49 @@
+.home-story {
+  margin-block: clamp(3rem, 7vw, 6rem);
+  scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+}
+
+.home-mission {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.5rem clamp(2rem, 6vw, 6rem);
+  padding-block: clamp(1rem, 3vw, 2.5rem);
+}
+
+.home-mission h2, .home-why h2 {
+  font-size: clamp(1.45rem, 3vw, 2.3rem);
+  letter-spacing: -.04em;
+  line-height: 1.1;
+}
+
+.home-mission-copy { display: grid; gap: 1.25rem; }
+.home-mission-copy p { max-width: 48ch; }
+.home-mission-lead {
+  font: 700 clamp(1.55rem, 3.3vw, 2.8rem)/1.2 var(--brand-heading);
+  letter-spacing: -.035em;
+}
+.home-mission-copy > p:last-child { font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.65; }
+
+.home-why {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  border-radius: 1.4rem;
+  background: var(--brand-soft-blue);
+}
+.home-why-statement {
+  max-width: 22ch;
+  margin-top: 1rem;
+  font: 700 clamp(2rem, 5.4vw, 4.5rem)/1.05 var(--brand-heading);
+  letter-spacing: -.045em;
+}
+.home-why a { text-decoration: underline; text-underline-offset: .2em; }
+.home-actions > h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.home-actions .start-tile { min-height: 19rem; }
+.home-actions .start-tile h3 { font-size: clamp(1.4rem, 2.3vw, 2rem); }
+
+@media (max-width: 43rem) {
+  .home-mission { grid-template-columns: 1fr; }
+  .home-actions .start-tile { min-height: 15rem; }
+}

@@ -10,16 +10,21 @@
     "titel": "Leer je kraanwater kennen.",
     "intro": "Van bron tot kraan. Ontdek waar je water vandaan komt, vind een tappunt in de buurt en bekijk hoe een thuistest werkt.",
     "videoPlaceholder": "Van de kraan naar de testkit",
-    "functiesTitel": "Wat wil je doen?",
+    "missie": {
+      "titel": "What we do",
+      "intro": "We make tap water the natural choice by building trust, sharing reliable information, and improving its taste.",
+      "tekst": "Through accessible home testing and citizen science, we empower people to better understand their tap water and help make it even better."
+    },
+    "waarom": {
+      "titel": "Why drink tap water?",
+      "tekst": "For our health, our planet and your wallet."
+    },
+    "functiesTitel": "Explore your tap water",
     "functies": [
-      { "titel": "Ken de herkomst", "tekst": "Zoek op je buurt of postcode en volg de weg van de bron tot je kraan.", "adres": "/mijn-water", "actie": "Zoek je buurt" },
-      { "titel": "Vul onderweg bij", "tekst": "Zoek een openbaar watertappunt op de kaart van Antwerpen.", "adres": "/kaart", "actie": "Open de kaart" },
-      { "titel": "Verken de thuistest", "tekst": "Bekijk een voorbeeldresultaat voor chloor of doorloop de loodzelfcheck.", "adres": "/testresultaten", "actie": "Naar mijn tests" }
-    ],
-    "meer": {
-      "titel": "Hoe werkt het burgeronderzoek?",
-      "tekst": "We onderzoeken hoe mensen hun kraanwater ervaren. Met de thuistest willen we een chloormeting naast die ervaring leggen. De app toont alvast hoe de terugkoppeling eruit kan zien."
-    }
+      { "titel": "Test your tap", "tekst": "Get to know your tap water through home testing and citizen science.", "adres": "/testresultaten", "actie": "Go to my tests" },
+      { "titel": "Where does my tap water come from?", "tekst": "Follow the journey from source to tap and find answers to your questions.", "adres": "/ontdek", "actie": "Discover my tap water" },
+      { "titel": "I’m thirsty", "tekst": "Closest public tap point? Explore the map for a refill nearby and discover our project’s participating places.", "adres": "/kaart", "actie": "Find a refill" }
+    ]
   },
   "nieuwsbrief": {
     "titel": "Nieuwsbrief",

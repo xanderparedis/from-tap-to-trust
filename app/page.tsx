@@ -6,6 +6,7 @@ import { MascotSlot } from "./_components/mascot-slot";
 import { StartMotion } from "./_components/start-motion";
 import { start, nieuwsbrief } from "../inhoud.json";
 import { MediaPlaceholder } from "./_components/media-placeholder";
+import "./home-story.css";
 
 type NewsletterEntry = {
   rubriek: string;
@@ -17,7 +18,7 @@ type NewsletterEntry = {
 };
 
 const entries: NewsletterEntry[] = nieuwsbrief.berichten;
-const featureIcons = { "/mijn-water": "water", "/kaart": "map", "/testresultaten": "tests" } as const;
+const featureIcons = { "/ontdek": "water", "/kaart": "map", "/testresultaten": "tests" } as const;
 
 export default function Home() {
   return (
@@ -41,7 +42,24 @@ export default function Home() {
         </section>
       </div>
 
-      <section id="ontdek" className="frame start-features" aria-labelledby="start-features-title">
+      <section id="ontdek" className="frame home-story" aria-labelledby="home-mission-title">
+        <div className="home-mission" data-enter lang="en">
+          <h2 id="home-mission-title">{start.missie.titel}</h2>
+          <div className="home-mission-copy">
+            <p className="home-mission-lead">{start.missie.intro}</p>
+            <p>{start.missie.tekst}</p>
+          </div>
+        </div>
+        <div className="home-why" data-enter>
+          <div lang="en">
+            <h2>{start.waarom.titel}</h2>
+            <p className="home-why-statement">{start.waarom.tekst}</p>
+          </div>
+          <p>Ontdek <Link href="/ontdek">waar jouw kraanwater vandaan komt</Link> en bekijk de <Link href="/veelgestelde-vragen">veelgestelde vragen</Link>.</p>
+        </div>
+      </section>
+
+      <section className="frame start-features home-actions" lang="en" aria-labelledby="start-features-title">
         <h2 id="start-features-title" data-enter>{start.functiesTitel}</h2>
         <div className="start-grid">
           {start.functies.map(({ titel, tekst, adres, actie }) => (
@@ -55,11 +73,6 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <details className="panel start-details" data-enter>
-          <summary>{start.meer.titel}</summary>
-          <p>{start.meer.tekst}</p>
-          <NextLink href="/waterproblemen">Wat kan er misgaan met kraanwater?</NextLink>
-        </details>
       </section>
 
       <section id="nieuwsbrief" className="frame newsletter" aria-labelledby="newsletter-title">
