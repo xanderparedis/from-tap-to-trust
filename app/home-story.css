@@ -1,5 +1,5 @@
 .home-story {
-  margin-block: clamp(3rem, 7vw, 6rem);
+  margin-block: clamp(1.5rem, 3vw, 2.5rem) clamp(3rem, 7vw, 6rem);
   scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
 }
 
@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 1.5rem clamp(2rem, 6vw, 6rem);
-  padding-block: clamp(1rem, 3vw, 2.5rem);
+  padding-block: .5rem clamp(1rem, 3vw, 2.5rem);
 }
 
 .home-mission h2, .home-why h2 {

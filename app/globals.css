@@ -253,6 +253,7 @@ p { max-width: 67ch; }
 .more-links svg { flex: none; width: 1.05rem; height: 1.05rem; }
 
 .site-header[data-home] + main.frame { width: 100%; }
+.start-film-track, .start-scene { background: var(--brand-blue); }
 
 .start-hero {
   display: grid;
@@ -260,8 +261,8 @@ p { max-width: 67ch; }
   align-items: center;
   gap: clamp(.9rem, 3vw, 2.5rem);
   padding: clamp(1.25rem, 4vw, 3.6rem);
-  border-radius: 1.45rem;
-  background: var(--brand-blue);
+  border-radius: 0;
+  background: transparent;
   color: var(--brand-paper);
 }
 .start-hero h1 {
@@ -1076,7 +1077,7 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
     .start-film-track::after {
       content: "";
       display: block;
-      height: clamp(15rem, 48svh, 29rem);
+      height: clamp(6rem, 16svh, 10rem);
     }
 
     .start-scene {
@@ -1084,7 +1085,7 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
       top: 0;
       display: grid;
       align-items: center;
-      min-height: 100svh;
+      min-height: min(100svh, 48rem);
       padding-block: clamp(4.7rem, 11svh, 6.2rem) var(--dock-space, 1.5rem);
       --film-progress: 0;
       --film-radius: calc(var(--film-progress) * 1.15rem);
