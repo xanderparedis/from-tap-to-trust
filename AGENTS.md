@@ -13,4 +13,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Werk lokaal op `http://localhost:3000`; wijk niet uit naar poort 3001. Het dev-script zet poort 3000 expliciet vast.
 - Publiceer aangevraagde wijzigingen na de passende controles meteen via `main` op GitHub naar de bestaande Vercel-app: `https://from-tap-to-trust.vercel.app/`. De gebruiker heeft deze publicatiestap als vaste werkwijze toegestaan.
 - Wacht op een geslaagde Vercel-deployment en controleer de publieke app voordat je meldt dat een wijziging live staat.
-- De mascotte is op verzoek tijdelijk verborgen via `mascotteActief: false` in `inhoud.json`. Bewaar de animatiebestanden en zet haar pas weer aan als de gebruiker daarom vraagt.
+- Losse mascottes in pagina's blijven verborgen via `mascotteActief: false` in `inhoud.json`. De gebruiker heeft de mascotte als hulpassistent rechtsonder toegestaan: zij verschijnt uitsluitend na klikken op de hulpknop, met de binnenkomstanimatie van onderen.

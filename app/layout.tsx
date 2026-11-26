@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteNav } from "./_components/site-nav";
 import { FooterWave } from "./_components/footer-wave";
+import { MascotHelper } from "./_components/mascot-helper";
 import "./globals.css";
+import "./_components/mascot-helper.css";
 
 export const metadata: Metadata = {
   title: { default: "From Tap to Trust", template: "%s | From Tap to Trust" },
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </nav>
           </div>
         </footer>
+        <MascotHelper />
       </body>
     </html>
   );
