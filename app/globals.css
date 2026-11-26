@@ -880,7 +880,7 @@ input::placeholder { color: var(--brand-blue); opacity: .76; }
 
   .dock-tabs {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: .13rem;
     padding: .38rem;
     background: var(--surface);

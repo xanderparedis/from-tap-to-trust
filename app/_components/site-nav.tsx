@@ -9,9 +9,9 @@ import { MediaPlaceholder } from "./media-placeholder";
 
 const primary = [
   ["/", "Start", "home"],
-  ["/mijn-water", "Herkomst", "water"],
-  ["/kaart", "Kaart", "map"],
   ["/testresultaten", "Mijn tests", "tests"],
+  ["/ontdek", "Ontdek", "discover"],
+  ["/kaart", "Kaart", "map"],
   ["/webshop", "Webshop", "shop"],
 ] as const;
 
@@ -25,10 +25,10 @@ const secondary = [
 
 const panels = [
   {
-    label: "Herkomst", href: "/mijn-water",
-    title: "Van bron tot kraan", description: "Volg de reis van het Antwerpse drinkwater.",
+    label: "Ontdek", href: "/ontdek",
+    title: "Leer je kraanwater kennen", description: "Ontdek de herkomst, verken de feiten en vind een antwoord op je vragen.",
     image: "Waterwinning aan het Albertkanaal",
-    links: [["/mijn-water", "Zoek je buurt of postcode"], ["/mijn-water#waterwinning-antwerpen", "Ontdek de herkomst"]],
+    links: [["/ontdek", "Alles ontdekken"], ["/mijn-water", "Waar komt mijn kraanwater vandaan?"], ["/veelgestelde-vragen#keuzes", "Feiten & misvattingen"], ["/veelgestelde-vragen", "Veelgestelde vragen"]],
   },
   {
     label: "Trusted by us", href: "/kaart",
@@ -50,18 +50,19 @@ const panels = [
   },
 ] as const;
 
-type Menu = (typeof panels)[number]["label"] | "mobile";
+type Menu = (typeof panels)[number]["label"];
 
 export function SiteNav() {
   const pathname = usePathname();
   const [openFor, setOpenFor] = useState<{ pathname: string; menu: Menu; pinned: boolean } | null>(null);
   const desktopToggles = useRef<Partial<Record<Menu, HTMLButtonElement | null>>>({});
-  const mobileToggle = useRef<HTMLButtonElement>(null);
   const desktopPanel = useRef<HTMLDivElement>(null);
   const header = useRef<HTMLElement>(null);
   const open = openFor?.pathname === pathname ? openFor : null;
   const panel = panels.find(({ label }) => label === open?.menu);
   const moreActive = secondary.some(([href]) => href === pathname);
+  const isActive = (href: string) => href === pathname ||
+    (href === "/ontdek" && ["/mijn-water", "/veelgestelde-vragen"].includes(pathname));
 
   function toggleMenu(menu: Menu) {
     setOpenFor(open?.menu === menu && open.pinned ? null : { pathname, menu, pinned: true });
@@ -74,7 +75,7 @@ export function SiteNav() {
       if (event.key !== "Escape" || !open) return;
       setOpenFor(null);
       if (header.current?.contains(document.activeElement)) {
-        const toggle = open.menu === "mobile" ? mobileToggle.current : desktopToggles.current[open.menu];
+        const toggle = desktopToggles.current[open.menu];
         toggle?.focus();
       }
     }
@@ -159,7 +160,7 @@ export function SiteNav() {
       <button key={label} ref={(node) => { desktopToggles.current[label] = node; }}
         type="button" className={href === "/testresultaten" ? "desktop-more nav-personal" : "desktop-more"}
         aria-controls="desktop-navigation-panel" aria-expanded={open?.menu === label}
-        data-active={(href ? href === pathname : moreActive) || undefined}
+        data-active={(href ? isActive(href) : moreActive) || undefined}
         onPointerEnter={(event) => {
           if (event.pointerType === "mouse" && !open?.pinned &&
             !desktopPanel.current?.contains(document.activeElement)) {
@@ -221,11 +222,11 @@ export function SiteNav() {
         </div>
       </div>
 
-      {open?.pinned && (
-        <button className={"menu-backdrop menu-backdrop-" + (panel ? "desktop" : "mobile")} type="button"
+      {open?.pinned && panel && (
+        <button className="menu-backdrop menu-backdrop-desktop" type="button"
           aria-label="Sluit het menu" tabIndex={-1} onClick={() => {
             setOpenFor(null);
-            const toggle = panel ? desktopToggles.current[panel.label] : mobileToggle.current;
+            const toggle = desktopToggles.current[panel.label];
             toggle?.focus();
           }} />
       )}
@@ -233,21 +234,13 @@ export function SiteNav() {
         <nav className="dock-tabs" aria-label="App-navigatie">
           {primary.map(([href, label, icon]) => (
             <Link className="dock-item" key={href} href={href}
-              aria-current={pathname === href ? "page" : undefined} onClick={() => setOpenFor(null)}>
+              aria-current={pathname === href ? "page" : undefined} data-active={isActive(href) || undefined}
+              onClick={() => setOpenFor(null)}>
               <span className="dock-icon"><AppIcon name={icon} /></span>
               <span>{label}</span>
             </Link>
           ))}
-          <button ref={mobileToggle} type="button" className="dock-item dock-more" aria-controls="platform-nav"
-            aria-expanded={open?.menu === "mobile"} data-active={moreActive || undefined}
-            onClick={() => toggleMenu("mobile")}>
-            <span className="dock-icon"><AppIcon name="more" /></span>
-            <span>Meer</span>
-          </button>
         </nav>
-        <div inert={open?.menu !== "mobile"} className={open?.menu === "mobile" ? "nav-drawer is-open" : "nav-drawer"}>
-          <nav id="platform-nav" className="more-links" aria-label="Meer pagina’s">{moreLinks(secondary)}</nav>
-        </div>
       </div>
     </header>
   );
